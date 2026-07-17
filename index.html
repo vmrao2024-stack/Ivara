@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IVARA The Divine Blessings | Premium Bathing Salts & Rituals</title>
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: '#c5a059',
+                        brand: {
+                            black: '#0A0A0A',
+                            dark: '#141414',
+                            slate: '#1E1E1E',
+                            cream: '#F5F2ED'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, .font-serif { font-family: 'Space Grotesk', sans-serif; }
+    </style>
+</head>
+<body class="bg-white text-neutral-800 dark:bg-brand-black dark:text-neutral-100 transition-colors duration-300">
+<!-- NAVIGATION BAR --><nav class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-brand-black/90 border-b border-neutral-200 dark:border-white/10 transition-colors duration-300">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20"><!-- Logo -->
+<div onclick="scrollToSection('home')" class="flex items-center gap-3 cursor-pointer group">
+<div onclick="scrollToSection('home')" class="flex items-center gap-3 cursor-pointer group">
+<div class="w-8 h-8 border border-gold flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+    <img src="images/logo.png" alt="Ivara Logo" class="w-6 h-6 object-contain" />
+</div>
+<div><span class="font-display text-xl tracking-[0.3em] font-light text-neutral-950 dark:text-brand-cream uppercase">Ivara</span> <span class="block text-[8px] tracking-[0.25em] text-gold uppercase font-bold -mt-0.5 font-mono">The Divine Blessings</span></div>
+</div>
+<!-- Desktop Navigation -->
+<div class="hidden md:flex items-center space-x-8"><button onclick="scrollToSection('home')" class="font-sans text-[11px] uppercase tracking-[0.18em] font-semibold text-gold">Home</button> <button onclick="scrollToSection('about')" class="font-sans text-[11px] uppercase tracking-[0.18em] font-medium text-neutral-500 dark:text-white/60 hover:text-gold transition-colors">Our Story</button> <button onclick="scrollToSection('collections')" class="font-sans text-[11px] uppercase tracking-[0.18em] font-medium text-neutral-500 dark:text-white/60 hover:text-gold transition-colors">Collections</button> <button onclick="scrollToSection('rituals')" class="font-sans text-[11px] uppercase tracking-[0.18em] font-medium text-neutral-500 dark:text-white/60 hover:text-gold transition-colors">Rituals</button> <button onclick="scrollToSection('ingredients')" class="font-sans text-[11px] uppercase tracking-[0.18em] font-medium text-neutral-500 dark:text-white/60 hover:text-gold transition-colors">Ingredients</button> <button onclick="scrollToSection('faq')" class="font-sans text-[11px] uppercase tracking-[0.18em] font-medium text-neutral-500 dark:text-white/60 hover:text-gold transition-colors">FAQ</button></div>
+<!-- Controls -->
+<div class="flex items-center gap-4"><button onclick="toggleDarkMode()" class="p-2.5 rounded-full hover:bg-neutral-100 dark:hover:bg-brand-slate transition-colors text-neutral-600 dark:text-neutral-300"> <i data-lucide="moon" id="theme-icon" class="w-4 h-4 text-neutral-600 dark:text-gold"></i> </button> <button onclick="scrollToSection('collections')" class="hidden sm:inline-block px-5 py-2 border border-neutral-300 dark:border-white/20 text-[9px] uppercase tracking-[0.15em] font-medium hover:bg-gold hover:text-brand-black hover:border-gold transition-all duration-300">Shop Now</button> <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 text-neutral-600 dark:text-neutral-300"> <i data-lucide="menu" id="menu-icon" class="w-5 h-5"></i> </button></div>
+</div>
+</div>
+<!-- Mobile Drawer -->
+<div id="mobile-menu" class="hidden md:hidden border-t border-neutral-200 dark:border-white/10 bg-white dark:bg-brand-dark p-4 space-y-2"><button onclick="scrollToSection('home')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-gold bg-gold/10">Home</button> <button onclick="scrollToSection('about')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Our Story</button> <button onclick="scrollToSection('collections')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Collections</button> <button onclick="scrollToSection('rituals')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Rituals</button> <button onclick="scrollToSection('ingredients')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Ingredients</button> <button onclick="scrollToSection('faq')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">FAQ</button></div>
+</nav><!-- HERO SECTION -->
+<section id="home" class="relative overflow-hidden pt-12 pb-20 md:py-28 bg-[#F5F2ED] dark:bg-brand-black border-b border-neutral-200 dark:border-white/10 transition-colors duration-500">
+<div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(197,160,89,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(197,160,89,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 flex flex-col items-start text-left space-y-8">
+<div class="text-gold uppercase tracking-[0.4em] text-[11px] font-mono font-bold block">The Divine Blessings</div>
+<h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl leading-[1.1] text-neutral-900 dark:text-brand-cream italic font-light">Every Bath, A <br /><span class="not-italic font-bold text-neutral-950 dark:text-white">Sacred Escape.</span></h1>
+<p class="text-neutral-700 dark:text-white/50 text-sm sm:text-base max-w-md leading-relaxed">Transform your daily routine into a luxurious wellness ritual. Our handcrafted mineral salts are infused with nature's finest botanicals to nourish your spirit.</p>
+<div class="flex flex-wrap items-center gap-4 sm:gap-6 pt-2">
+<div class="flex items-center gap-2"><span class="font-sans text-xs tracking-[0.2em] uppercase text-neutral-400 font-medium">Relax</span></div>
+<div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span><span class="font-sans text-xs tracking-[0.2em] uppercase text-neutral-400 font-medium">Rejuvenate</span></div>
+<div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span><span class="font-sans text-xs tracking-[0.2em] uppercase text-neutral-400 font-medium">Renew</span></div>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-4"><button onclick="scrollToSection('collections')" class="bg-gold text-brand-black px-8 py-4 text-xs uppercase tracking-[0.2em] font-bold shadow-md inline-flex items-center gap-2"> <span>Discover Your Ritual</span> <i data-lucide="arrow-right" class="w-4 h-4"></i> </button>
+<div class="flex items-center justify-center space-x-3 px-8 py-4 border border-neutral-300 dark:border-white/10 bg-white/50 dark:bg-brand-dark text-xs font-semibold text-neutral-800 dark:text-brand-cream">
+<div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-[10px] uppercase tracking-widest font-mono">Natural &amp; Organic</span></div>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="relative border border-neutral-300 dark:border-white/10 bg-white dark:bg-brand-dark p-4 shadow-xl"><img id="img-hero" src="images/6.jpeg" alt="IVARA Luxury Bathing Salts" class="w-full h-[320px] sm:h-[400px] object-cover" />
+<div class="absolute bottom-8 right-8 backdrop-blur-md bg-[#0A0A0A]/80 border border-white/10 px-4 py-2.5 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> <span class="font-mono text-[9px] tracking-[0.2em] text-gold uppercase font-medium">IVARA PURE MINERALS</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ABOUT SECTION -->
+<section id="about" class="bg-white dark:bg-brand-black py-24 border-b border-neutral-200 dark:border-white/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start pb-20">
+<div class="lg:col-span-5 space-y-4"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold">Our Foundations</span>
+<h2 class="font-serif text-3xl sm:text-4xl font-light italic text-neutral-950 dark:text-brand-cream">The Sacred Origin of <span class="not-italic font-bold">Ivara</span></h2>
+<div class="h-[1px] w-16 bg-gold"></div>
+</div>
+<div class="lg:col-span-7 space-y-6 text-neutral-700 dark:text-white/60 text-sm sm:text-base leading-relaxed">
+<p class="font-medium text-neutral-900 dark:text-brand-cream text-base">At Ivara, we believe that self-care helps modern balance.</p>
+<p>Inspired by nature and ancient wellness traditions, Ivara brings the therapeutic power of mineral-rich bath treatments into active lifestyles.</p>
+<p>Every blend is meticulously handcrafted using premium minerals selected for targeted biological and emotional benefits. Whether you seek release after a stressful day, relief from muscle tightness, or an uninterrupted sanctuary of peace, our products elevate bathing into a sacred daily ritual.</p>
+</div>
+</div>
+<div class="pt-16 pb-6">
+<div class="bg-[#F5F2ED] dark:bg-brand-dark border border-neutral-200 dark:border-white/10 p-8 sm:p-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-4 space-y-4"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold">Why Bathing Salts?</span>
+<h3 class="font-serif text-3xl font-light text-neutral-950 dark:text-brand-cream">Therapeutic Luxury</h3>
+<p class="font-sans text-xs sm:text-sm text-neutral-500 dark:text-white/40 leading-relaxed">A warm bath infused with mineral-rich salts is an ancient bio-active therapy that replenishes the body.</p>
+</div>
+<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex gap-4 items-start bg-white/50 dark:bg-[#141414]/50 p-5 border border-neutral-200 dark:border-white/10"><i data-lucide="check" class="text-gold w-4 h-4 shrink-0 mt-0.5"></i>
+<div>
+<h4 class="font-serif text-base font-medium text-neutral-950 dark:text-brand-cream">Relieves Stress &amp; Anxiety</h4>
+<p class="font-sans text-xs text-neutral-500 dark:text-white/40 mt-1">Creates a calming sanctuary atmosphere that releases physical and mental tension.</p>
+</div>
+</div>
+<div class="flex gap-4 items-start bg-white/50 dark:bg-[#141414]/50 p-5 border border-neutral-200 dark:border-white/10"><i data-lucide="check" class="text-gold w-4 h-4 shrink-0 mt-0.5"></i>
+<div>
+<h4 class="font-serif text-base font-medium text-neutral-950 dark:text-brand-cream">Supports Better Sleep</h4>
+<p class="font-sans text-xs text-neutral-500 dark:text-white/40 mt-1">Allows the muscles to relax and prepares the nervous system for deep sleep.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PRODUCT COLLECTIONS SECTION -->
+<section id="collections" class="py-24 bg-white dark:bg-brand-black border-b border-neutral-200 dark:border-white/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-xl mx-auto space-y-3 mb-16"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold">Signature Blends</span>
+<h2 class="font-serif text-3xl sm:text-4xl font-light text-neutral-950 dark:text-brand-cream">Discover Your Perfect Blend</h2>
+</div>
+<!-- Cards Container dynamically handled by JS -->
+<div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+</div>
+</section>
+<!-- RITUAL GUIDE SECTION -->
+<section id="rituals" class="py-24 bg-white dark:bg-brand-black border-b border-neutral-200 dark:border-white/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-xl mx-auto space-y-3 mb-16"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold">Sacred Escape</span>
+<h2 class="font-serif text-3xl sm:text-4xl font-light text-neutral-950 dark:text-brand-cream">Guided Meditation Timer</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-6 space-y-6">
+<h3 class="text-xl font-bold">The Slow Down Soaking Protocol</h3>
+<p class="text-neutral-500 dark:text-white/40 text-sm">Light a candle, turn off harsh lights, add your bath salts, and follow the synchronized breathing cycle below.</p>
+<div class="space-y-4">
+<div class="flex gap-4 p-4 border border-neutral-200 dark:border-neutral-800"><span class="font-bold text-gold">01</span>
+<p class="text-xs">Fill your tub with warm water and add 2-3 scoops of mineral salts.</p>
+</div>
+<div class="flex gap-4 p-4 border border-neutral-200 dark:border-neutral-800"><span class="font-bold text-gold">02</span>
+<p class="text-xs">Immerse completely and trigger the breathing configuration clock.</p>
+</div>
+</div>
+</div>
+<div class="lg:col-span-6 flex justify-center">
+<div class="bg-[#F5F2ED] dark:bg-brand-dark p-8 border border-neutral-200 dark:border-white/10 w-full max-w-md text-center space-y-6 shadow-xl">
+<div class="relative w-48 h-48 mx-auto rounded-full flex items-center justify-center bg-white dark:bg-brand-black border border-neutral-200 dark:border-white/10 shadow-inner">
+<div id="breath-ripple" class="absolute w-36 h-36 rounded-full bg-gold/10 scale-100 transition-transform duration-[4000ms] ease-in-out"></div>
+<div class="z-10"><span id="breath-phase" class="block font-mono text-[9px] tracking-widest uppercase text-neutral-400">Ready</span> <span id="timer-display" class="block font-serif text-4xl text-neutral-950 dark:text-brand-cream font-medium">2:00</span></div>
+</div>
+<div class="flex justify-center gap-4"><button onclick="resetTimer()" class="p-3 bg-white dark:bg-brand-black text-neutral-500 border border-neutral-200 dark:border-white/10"><i data-lucide="refresh-cw" class="w-4 h-4"></i></button> <button onclick="toggleTimer()" id="btn-timer-control" class="px-6 py-3.5 bg-gold text-brand-black text-xs uppercase tracking-widest font-bold">Begin Soaking</button></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- INGREDIENTS SECTION -->
+<section id="ingredients" class="py-24 bg-white dark:bg-brand-black border-b border-neutral-200 dark:border-white/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-xl mx-auto space-y-3 mb-16"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold">Pure Formulation</span>
+<h2 class="font-serif text-3xl sm:text-4xl font-light text-neutral-950 dark:text-brand-cream">Nature's Finest Elements</h2>
+</div>
+<div id="ingredients-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+</div>
+</section>
+<!-- FAQ SECTION -->
+<section id="faq" class="py-24 bg-white dark:bg-brand-black">
+<div class="max-w-3xl mx-auto px-4 sm:px-6">
+<div class="text-center space-y-3 mb-16"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold">Common Inquiries</span>
+<h2 class="font-serif text-3xl font-light text-neutral-950 dark:text-brand-cream">Frequently Asked Questions</h2>
+</div>
+<div id="faq-container" class="space-y-4"></div>
+</div>
+</section>
+<!-- GLOBAL SCRIPTS & CONFIGURATION -->
+<script>
+        // ==========================================
+        // 📸 CENTRALIZED IMAGE CONFIGURATION
+        // Modify these paths to replace your photos
+        // ==========================================
+        const IMAGE_CONFIG = {
+            heroBanner: 'images/6.jpeg',
+            products: {
+                'rose-serenity': 'images/1.jpg',
+                'lavender-dreams': 'images/2.jpg',
+                'himalayan-detox': 'images/3.png',
+                'ocean-bliss': 'images/4.png',
+                'jasmine-divine': 'images/5.jpg'
+            }
+        };
+
+        // Static Structural Data Setup
+        const PRODUCTS = [
+            { id: 'rose-serenity', name: 'Rose Serenity', tagline: 'Deep relaxation & self-love rituals', description: 'A luxurious blend infused with real organic rose petals and botanical floral essential oils.', bestFor: 'Stress relief and self-love rituals' },
+            { id: 'lavender-dreams', name: 'Lavender Dreams', tagline: 'Unwind & prepare for restful sleep', description: 'Prepare your mind and body for deep, restorative sleep with pure Bulgarian lavender extracts.', bestFor: 'Bedtime preparation' },
+            { id: 'himalayan-detox', name: 'Himalayan Detox', tagline: 'Purification, renewal & mineral replenishment', description: 'Rich Himalayan pink salt blended specifically for purification, renewal, and deep muscle recovery.', bestFor: 'Post-workout recovery' },
+            { id: 'ocean-bliss', name: 'Ocean Bliss', tagline: 'Therapeutic power of ocean minerals', description: 'Formulated with mineral-dense dead sea salts and crisp marine botanicals to hydrate the skin.', bestFor: 'Weekend wellness rituals' },
+            { id: 'jasmine-divine', name: 'Jasmine Divine', tagline: 'Uplifting floral elegance & emotional balance', description: 'An enchanting, exotic floral blend designed to inspire joy, creativity, and inner strength.', bestFor: 'Mindful self-care moments' }
+        ];
+
+        const INGREDIENTS = [
+            { name: 'Himalayan Pink Salt', desc: 'Contains over 84 essential trace minerals.', icon: 'sparkles' },
+            { name: 'Epsom Salt', desc: 'Soothes tired muscles and reduces inflammation.', icon: 'activity' },
+            { name: 'Dead Sea Salt', desc: 'Harbours high mineral composition to soothe dry skin.', icon: 'droplet' }
+        ];
+
+        const FAQS = [
+            { q: 'Are Ivara Bathing Salts suitable for all skin types?', a: 'Yes. Our products are formulated using 100% natural minerals and organic botanical extracts.' },
+            { q: 'How often can I use bathing salts?', a: 'We recommend enjoying an Ivara bath 2-3 times per week for optimal relaxation.' }
+        ];
+
+        // Component Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            // Setup Hero Image from Config
+            document.getElementById('img-hero').src = IMAGE_CONFIG.heroBanner;
+
+            // Render Product Grid items
+            const productGrid = document.getElementById('product-grid');
+            PRODUCTS.forEach(p => {
+                const imgSrc = IMAGE_CONFIG.products[p.id] || IMAGE_CONFIG.heroBanner;
+                productGrid.innerHTML += `
+                    <div class="bg-[#F5F2ED]/40 dark:bg-brand-dark border border-neutral-200 dark:border-white/10 p-6 flex flex-col justify-between">
+                        <div class="relative overflow-hidden aspect-square border border-neutral-300 dark:border-white/10 bg-white dark:bg-brand-black p-3">
+                            <img src="${imgSrc}" alt="${p.name}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="pt-6">
+                            <h3 class="font-serif text-2xl text-neutral-950 dark:text-brand-cream font-medium">${p.name}</h3>
+                            <span class="block text-[10px] text-gold font-mono tracking-widest uppercase font-semibold mt-1">${p.tagline}</span>
+                            <p class="font-sans text-xs text-neutral-500 dark:text-white/40 mt-3 leading-relaxed">${p.description}</p>
+                            <div class="border-t border-neutral-200 dark:border-white/10 pt-4 mt-6 text-xs text-neutral-400">
+                                <strong>Best For:</strong> ${p.bestFor}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Render Ingredients
+            const ingGrid = document.getElementById('ingredients-grid');
+            INGREDIENTS.forEach(ing => {
+                ingGrid.innerHTML += `
+                    <div class="bg-[#F5F2ED]/40 dark:bg-brand-dark border border-neutral-200 dark:border-white/10 p-6">
+                        <div class="w-10 h-10 border border-gold/30 flex items-center justify-center text-gold mb-4">
+                            <i data-lucide="${ing.icon}"></i>
+                        </div>
+                        <h4 class="font-serif text-lg font-medium">${ing.name}</h4>
+                        <p class="font-sans text-xs text-neutral-500 mt-2">${ing.desc}</p>
+                    </div>
+                `;
+            });
+
+            // Render Accordion FAQs
+            const faqContainer = document.getElementById('faq-container');
+            FAQS.forEach((faq, idx) => {
+                faqContainer.innerHTML += `
+                    <div class="border border-neutral-200 dark:border-white/10 bg-[#F5F2ED]/40 dark:bg-brand-dark">
+                        <button onclick="toggleFaq(${idx})" class="w-full text-left px-6 py-5 flex justify-between items-center font-bold">
+                            <span class="text-sm">${faq.q}</span>
+                            <i data-lucide="chevron-down" id="chevron-${idx}" class="w-4 h-4 transition-transform"></i>
+                        </button>
+                        <div id="ans-${idx}" class="hidden px-6 pb-6 text-xs text-neutral-500 dark:text-white/50">${faq.a}</div>
+                    </div>
+                `;
+            });
+
+            lucide.createIcons();
+        });
+
+        // Interactive Interface Methods
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('theme-icon');
+            if (document.documentElement.classList.contains('dark')) {
+                icon.setAttribute('data-lucide', 'sun');
+            } else {
+                icon.setAttribute('data-lucide', 'moon');
+            }
+            lucide.createIcons();
+        }
+
+        function toggleFaq(idx) {
+            const ans = document.getElementById(`ans-${idx}`);
+            const chevron = document.getElementById(`chevron-${idx}`);
+            ans.classList.toggle('hidden');
+            chevron.classList.toggle('rotate-180');
+        }
+
+        // Immersive Bio-Breathe Logic
+        let timer = null;
+        let timeLeft = 120;
+        let running = false;
+
+        function toggleTimer() {
+            running = !running;
+            const btn = document.getElementById('btn-timer-control');
+            if(running) {
+                btn.innerText = "Pause Ritual";
+                timer = setInterval(updateTimer, 1000);
+                startBreathingCycle();
+            } else {
+                btn.innerText = "Begin Soaking";
+                clearInterval(timer);
+                document.getElementById('breath-phase').innerText = "Paused";
+            }
+        }
+
+        function updateTimer() {
+            if(timeLeft <= 0) {
+                clearInterval(timer);
+                return resetTimer();
+            }
+            timeLeft--;
+            const mins = Math.floor(timeLeft / 60);
+            const secs = timeLeft % 60;
+            document.getElementById('timer-display').innerText = `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function resetTimer() {
+            clearInterval(timer);
+            timeLeft = 120;
+            running = false;
+            document.getElementById('timer-display').innerText = "2:00";
+            document.getElementById('breath-phase').innerText = "Ready";
+            document.getElementById('btn-timer-control').innerText = "Begin Soaking";
+            document.getElementById('breath-ripple').style.transform = "scale(1)";
+        }
+
+        function startBreathingCycle() {
+            if(!running) return;
+            const phaseEl = document.getElementById('breath-phase');
+            const ripple = document.getElementById('breath-ripple');
+            
+            phaseEl.innerText = "Inhale";
+            ripple.style.transform = "scale(1.4)";
+            
+            setTimeout(() => {
+                if(!running) return;
+                phaseEl.innerText = "Hold";
+                setTimeout(() => {
+                    if(!running) return;
+                    phaseEl.innerText = "Exhale";
+                    ripple.style.transform = "scale(1)";
+                    setTimeout(() => {
+                        if(running) startBreathingCycle();
+                    }, 4000);
+                }, 4000);
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
