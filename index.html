@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth select-none">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,9 +49,15 @@
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
         h2, h3, h4, .font-serif { font-family: 'Space Grotesk', sans-serif; }
         
+        /* Smooth Scroll Canvas Container */
+        #scroll-container {
+            will-change: transform;
+            transition: transform 0.6s cubic-bezier(0.1, 1, 0.1, 1);
+        }
+
         /* Custom dynamic mesh gradient background for Hero */
         .animated-mesh {
             background: linear-gradient(-45deg, #F5F2ED, #EFECE6, #EAE5DC, #F5F2ED);
@@ -65,53 +71,53 @@
         /* Standard Section Reveal */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* 🚀 High-End Fly & Zoom Title Animations */
+        /* High-End Fly & Zoom Title Animations */
         .title-reveal .fly-badge,
         .title-reveal .fly-text,
         .title-reveal .fly-line {
             opacity: 0;
             transform: translateX(-40px) scale(0.95);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity;
         }
 
         .title-reveal .fly-line {
             transform: translateX(-40px) scaleX(0);
             transform-origin: left;
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         /* Staggered triggers when active class drops */
-        .title-reveal.active .fly-badge {
-            opacity: 1;
-            transform: translateX(0) scale(1);
-            transition-delay: 0ms;
-        }
-        .title-reveal.active .fly-text {
-            opacity: 1;
-            transform: translateX(0) scale(1);
-            transition-delay: 150ms;
-        }
-        .title-reveal.active .fly-line {
-            opacity: 1;
-            transform: translateX(0) scaleX(1);
-            transition-delay: 300ms;
+        .title-reveal.active .fly-badge { opacity: 1; transform: translateX(0) scale(1); transition-delay: 0ms; }
+        .title-reveal.active .fly-text { opacity: 1; transform: translateX(0) scale(1); transition-delay: 150ms; }
+        .title-reveal.active .fly-line { opacity: 1; transform: translateX(0) scaleX(1); transition-delay: 300ms; }
+
+        /* Hardware Accelerated Parallax Containers */
+        .parallax-wrapper {
+            will-change: transform;
+            transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
         }
     </style>
 </head>
 <body class="bg-white text-neutral-800 dark:bg-brand-black dark:text-neutral-100 transition-colors duration-300">
-<!-- NAVIGATION BAR -->
-<nav class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-brand-black/90 border-b border-neutral-200 dark:border-white/10 transition-colors duration-300">
+
+<!-- 🚀 Minimalist Top Scroll Progress Bar -->
+<div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-gold z-[60] w-0 transition-all duration-100 ease-out pointer-events-none"></div>
+
+<!-- NAVIGATION BAR (Fixed out of scroll canvas context) -->
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/80 dark:bg-brand-black/90 border-b border-neutral-200 dark:border-white/10 transition-colors duration-300">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex items-center justify-between h-20"><!-- Logo -->
+<div class="flex items-center justify-between h-20">
+<!-- Logo -->
 <div onclick="scrollToSection('home')" class="flex items-center gap-3 cursor-pointer group">
 <div class="w-14 h-14 border border-gold flex items-center justify-center transition-transform duration-500 group-hover:rotate-6 group-hover:scale-105">
     <img src="images/logo.png" alt="Ivara Logo" class="w-14 h-14 object-contain" />
@@ -119,7 +125,14 @@
 <div><span class="font-display text-xl tracking-[0.3em] font-light text-neutral-950 dark:text-brand-cream uppercase">Ivara</span> <span class="block text-[8px] tracking-[0.25em] text-gold uppercase font-bold -mt-0.5 font-mono">The Divine Blessings</span></div>
 </div>
 <!-- Desktop Navigation -->
-<div class="hidden md:flex items-center space-x-8"><button onclick="scrollToSection('home')" class="font-sans text-[11px] uppercase tracking-[0.18em] font-semibold text-gold relative after:content-[''] after:absolute after:w-full after:scale-x-100 after:h-[1px] after:bottom-0 after:left-0 after:bg-gold transition-all">Home</button> <button onclick="scrollToSection('about')" class="font-sans text-[11px] uppercase tracking-[0.18em] font-medium text-neutral-500 dark:text-white/60 hover:text-gold transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 hover:after:scale-x-100 after:h-[1px] after:bottom-0 after:left-0 after:bg-gold after:transition-transform">Our Story</button> <button onclick="scrollToSection('collections')" class="font-sans text-[11px] uppercase tracking-[0.18em] font-medium text-neutral-500 dark:text-white/60 hover:text-gold transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 hover:after:scale-x-100 after:h-[1px] after:bottom-0 after:left-0 after:bg-gold after:transition-transform">Collections</button> <button onclick="scrollToSection('rituals')" class="font-sans text-[11px] uppercase tracking-[0.18em] font-medium text-neutral-500 dark:text-white/60 hover:text-gold transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 hover:after:scale-x-100 after:h-[1px] after:bottom-0 after:left-0 after:bg-gold after:transition-transform">Rituals</button> <button onclick="scrollToSection('ingredients')" class="font-sans text-[11px] uppercase tracking-[0.18em] font-medium text-neutral-500 dark:text-white/60 hover:text-gold transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 hover:after:scale-x-100 after:h-[1px] after:bottom-0 after:left-0 after:bg-gold after:transition-transform">Ingredients</button> <button onclick="scrollToSection('faq')" class="font-sans text-[11px] uppercase tracking-[0.18em] font-medium text-neutral-500 dark:text-white/60 hover:text-gold transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 hover:after:scale-x-100 after:h-[1px] after:bottom-0 after:left-0 after:bg-gold after:transition-transform">FAQ</button></div>
+<div class="hidden md:flex items-center space-x-8">
+    <button onclick="scrollToSection('home')" class="nav-btn font-sans text-[11px] uppercase tracking-[0.18em] font-semibold text-gold relative after:content-[''] after:absolute after:w-full after:scale-x-100 after:h-[1px] after:bottom-0 after:left-0 after:bg-gold transition-all">Home</button> 
+    <button onclick="scrollToSection('about')" class="nav-btn font-sans text-[11px] uppercase tracking-[0.18em] font-medium text-neutral-500 dark:text-white/60 hover:text-gold transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 hover:after:scale-x-100 after:h-[1px] after:bottom-0 after:left-0 after:bg-gold after:transition-transform">Our Story</button> 
+    <button onclick="scrollToSection('collections')" class="nav-btn font-sans text-[11px] uppercase tracking-[0.18em] font-medium text-neutral-500 dark:text-white/60 hover:text-gold transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 hover:after:scale-x-100 after:h-[1px] after:bottom-0 after:left-0 after:bg-gold after:transition-transform">Collections</button> 
+    <button onclick="scrollToSection('rituals')" class="nav-btn font-sans text-[11px] uppercase tracking-[0.18em] font-medium text-neutral-500 dark:text-white/60 hover:text-gold transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 hover:after:scale-x-100 after:h-[1px] after:bottom-0 after:left-0 after:bg-gold after:transition-transform">Rituals</button> 
+    <button onclick="scrollToSection('ingredients')" class="nav-btn font-sans text-[11px] uppercase tracking-[0.18em] font-medium text-neutral-500 dark:text-white/60 hover:text-gold transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 hover:after:scale-x-100 after:h-[1px] after:bottom-0 after:left-0 after:bg-gold after:transition-transform">Ingredients</button> 
+    <button onclick="scrollToSection('faq')" class="nav-btn font-sans text-[11px] uppercase tracking-[0.18em] font-medium text-neutral-500 dark:text-white/60 hover:text-gold transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 hover:after:scale-x-100 after:h-[1px] after:bottom-0 after:left-0 after:bg-gold after:transition-transform">FAQ</button>
+</div>
 <!-- Controls -->
 <div class="flex items-center gap-4"><button onclick="toggleDarkMode()" class="p-2.5 rounded-full hover:bg-neutral-100 dark:hover:bg-brand-slate transition-transform active:scale-95 text-neutral-600 dark:text-neutral-300"> <i data-lucide="moon" id="theme-icon" class="w-4 h-4 text-neutral-600 dark:text-gold transition-transform duration-300"></i> </button> <button onclick="scrollToSection('collections')" class="hidden sm:inline-block px-5 py-2 border border-neutral-300 dark:border-white/20 text-[9px] uppercase tracking-[0.15em] font-medium hover:bg-gold hover:text-brand-black hover:border-gold hover:shadow-lg hover:shadow-gold/10 active:scale-98 transition-all duration-300">Shop Now</button> <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 text-neutral-600 dark:text-neutral-300"> <i data-lucide="menu" id="menu-icon" class="w-5 h-5"></i> </button></div>
 </div>
@@ -127,134 +140,147 @@
 <!-- Mobile Drawer -->
 <div id="mobile-menu" class="hidden md:hidden border-t border-neutral-200 dark:border-white/10 bg-white dark:bg-brand-dark p-4 space-y-2"><button onclick="scrollToSection('home')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-gold bg-gold/10">Home</button> <button onclick="scrollToSection('about')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Our Story</button> <button onclick="scrollToSection('collections')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Collections</button> <button onclick="scrollToSection('rituals')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Rituals</button> <button onclick="scrollToSection('ingredients')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Ingredients</button> <button onclick="scrollToSection('faq')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">FAQ</button></div>
 </nav>
-<!-- HERO SECTION -->
-<section id="home" class="animated-mesh animate-gradient-mesh relative overflow-hidden pt-12 pb-20 md:py-28 border-b border-neutral-200 dark:border-white/10 transition-colors duration-500">
-<div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(197,160,89,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(197,160,89,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none"></div>
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-<div class="lg:col-span-7 flex flex-col items-start text-left space-y-8 title-reveal active">
-<div class="text-gold uppercase tracking-[0.4em] text-[11px] font-mono font-bold block fly-badge">The Divine Blessings</div>
-<h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl leading-[1.1] text-neutral-900 dark:text-brand-cream italic font-light fly-text">Every Bath, A <br /><span class="not-italic font-bold text-neutral-950 dark:text-white relative">Sacred Escape.</span></h1>
-<p class="text-neutral-700 dark:text-white/50 text-sm sm:text-base max-w-md leading-relaxed">Transform your daily routine into a luxurious wellness ritual. Our handcrafted mineral salts are infused with nature's finest botanicals to nourish your spirit.</p>
-<div class="flex flex-wrap items-center gap-4 sm:gap-6 pt-2">
-<div class="flex items-center gap-2"><span class="font-sans text-xs tracking-[0.2em] uppercase text-neutral-400 font-medium hover:text-gold transition-colors duration-300">Relax</span></div>
-<div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span><span class="font-sans text-xs tracking-[0.2em] uppercase text-neutral-400 font-medium hover:text-gold transition-colors duration-300">Rejuvenate</span></div>
-<div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span><span class="font-sans text-xs tracking-[0.2em] uppercase text-neutral-400 font-medium hover:text-gold transition-colors duration-300">Renew</span></div>
+
+<!-- MAIN SMOOTH SCROLL INTERACTION FRAMEWORK LAYER -->
+<div id="scroll-container" class="pt-20">
+
+    <!-- HERO SECTION -->
+    <section id="home" class="animated-mesh animate-gradient-mesh relative overflow-hidden pt-16 pb-20 md:py-32 border-b border-neutral-200 dark:border-white/10 transition-colors duration-500">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(197,160,89,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(197,160,89,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-7 flex flex-col items-start text-left space-y-8 title-reveal">
+    <div class="text-gold uppercase tracking-[0.4em] text-[11px] font-mono font-bold block fly-badge">The Divine Blessings</div>
+    <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl leading-[1.1] text-neutral-900 dark:text-brand-cream italic font-light fly-text">Every Bath, A <br /><span class="not-italic font-bold text-neutral-950 dark:text-white relative">Sacred Escape.</span></h1>
+    <div class="h-[1px] w-16 bg-gold fly-line"></div>
+    <p class="text-neutral-700 dark:text-white/50 text-sm sm:text-base max-w-md leading-relaxed">Transform your daily routine into a luxurious wellness ritual. Our handcrafted mineral salts are infused with nature's finest botanicals to nourish your spirit.</p>
+    <div class="flex flex-wrap items-center gap-4 sm:gap-6 pt-2">
+    <div class="flex items-center gap-2"><span class="font-sans text-xs tracking-[0.2em] uppercase text-neutral-400 font-medium hover:text-gold transition-colors duration-300">Relax</span></div>
+    <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span><span class="font-sans text-xs tracking-[0.2em] uppercase text-neutral-400 font-medium hover:text-gold transition-colors duration-300">Rejuvenate</span></div>
+    <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span><span class="font-sans text-xs tracking-[0.2em] uppercase text-neutral-400 font-medium hover:text-gold transition-colors duration-300">Renew</span></div>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-4"><button onclick="scrollToSection('collections')" class="bg-gold text-brand-black px-8 py-4 text-xs uppercase tracking-[0.2em] font-bold shadow-md hover:bg-gold/90 hover:shadow-xl hover:shadow-gold/20 active:scale-98 transition-all duration-300 inline-flex items-center gap-2 group"> <span>Discover Your Ritual</span> <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i> </button>
+    <div class="flex items-center justify-center space-x-3 px-8 py-4 border border-neutral-300 dark:border-white/10 bg-white/50 dark:bg-brand-dark text-xs font-semibold text-neutral-800 dark:text-brand-cream">
+    <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+    <span class="text-[10px] uppercase tracking-widest font-mono">Natural &amp; Organic</span></div>
+    </div>
+    </div>
+    <!-- 🚀 Parallax Target Image Wrapper -->
+    <div class="lg:col-span-5 relative animate-float parallax-wrapper" data-speed="-1.5">
+    <div class="relative border border-neutral-300 dark:border-white/10 bg-white dark:bg-brand-dark p-4 shadow-xl overflow-hidden group">
+        <img id="img-hero" src="images/6.jpeg" alt="IVARA Luxury Bathing Salts" class="w-full h-[320px] sm:h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" />
+    <div class="absolute bottom-8 right-8 backdrop-blur-md bg-[#0A0A0A]/80 border border-white/10 px-4 py-2.5 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold animate-ping"></span> <span class="font-mono text-[9px] tracking-[0.2em] text-gold uppercase font-medium">IVARA PURE MINERALS</span></div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="bg-white dark:bg-brand-black py-24 border-b border-neutral-200 dark:border-white/10 reveal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start pb-20">
+    <div class="lg:col-span-5 space-y-4 title-reveal"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold fly-badge inline-block">Our Foundations</span>
+    <h2 class="font-serif text-3xl sm:text-4xl font-light italic text-neutral-950 dark:text-brand-cream fly-text">The Sacred Origin of <span class="not-italic font-bold">Ivara</span></h2>
+    <div class="h-[1px] w-16 bg-gold fly-line"></div>
+    </div>
+    <div class="lg:col-span-7 space-y-6 text-neutral-700 dark:text-white/60 text-sm sm:text-base leading-relaxed pt-6 lg:pt-0">
+    <p class="font-medium text-neutral-900 dark:text-brand-cream text-base">At Ivara, we believe that self-care helps modern balance.</p>
+    <p>Inspired by nature and ancient wellness traditions, Ivara brings the therapeutic power of mineral-rich bath treatments into active lifestyles.</p>
+    <p>Every blend is meticulously handcrafted using premium minerals selected for targeted biological and emotional benefits. Whether you seek release after a stressful day, relief from muscle tightness, or an uninterrupted sanctuary of peace, our products elevate bathing into a sacred daily ritual.</p>
+    </div>
+    </div>
+    <div class="pt-16 pb-6">
+    <div class="bg-[#F5F2ED] dark:bg-brand-dark border border-neutral-200 dark:border-white/10 p-8 sm:p-12 transition-all duration-300 hover:shadow-inner">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-4 space-y-4 title-reveal"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold fly-badge inline-block">Why Bathing Salts?</span>
+    <h3 class="font-serif text-3xl font-light text-neutral-950 dark:text-brand-cream fly-text">Therapeutic Luxury</h3>
+    <p class="font-sans text-xs sm:text-sm text-neutral-500 dark:text-white/40 leading-relaxed">A warm bath infused with mineral-rich salts is an ancient bio-active therapy that replenishes the body.</p>
+    </div>
+    <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="flex gap-4 items-start bg-white/50 dark:bg-[#141414]/50 p-5 border border-neutral-200 dark:border-white/10 transition-transform duration-300 hover:-translate-y-1 hover:bg-white dark:hover:bg-brand-slate"><i data-lucide="check" class="text-gold w-4 h-4 shrink-0 mt-0.5"></i>
+    <div>
+    <h4 class="font-serif text-base font-medium text-neutral-950 dark:text-brand-cream">Relieves Stress &amp; Anxiety</h4>
+    <p class="font-sans text-xs text-neutral-500 dark:text-white/40 mt-1">Creates a calming sanctuary atmosphere that releases physical and mental tension.</p>
+    </div>
+    </div>
+    <div class="flex gap-4 items-start bg-white/50 dark:bg-[#141414]/50 p-5 border border-neutral-200 dark:border-white/10 transition-transform duration-300 hover:-translate-y-1 hover:bg-white dark:hover:bg-brand-slate"><i data-lucide="check" class="text-gold w-4 h-4 shrink-0 mt-0.5"></i>
+    <div>
+    <h4 class="font-serif text-base font-medium text-neutral-950 dark:text-brand-cream">Supports Better Sleep</h4>
+    <p class="font-sans text-xs text-neutral-500 dark:text-white/40 mt-1">Allows the muscles to relax and prepares the nervous system for deep sleep.</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+
+    <!-- PRODUCT COLLECTIONS SECTION -->
+    <section id="collections" class="py-24 bg-white dark:bg-brand-black border-b border-neutral-200 dark:border-white/10 reveal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-xl mx-auto space-y-3 mb-16 title-reveal"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold fly-badge inline-block">Signature Blends</span>
+    <h2 class="font-serif text-3xl sm:text-4xl font-light text-neutral-950 dark:text-brand-cream fly-text">Discover Your Perfect Blend</h2>
+    </div>
+    <!-- Cards Container dynamically handled by JS -->
+    <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </div>
+    </section>
+
+    <!-- RITUAL GUIDE SECTION -->
+    <section id="rituals" class="py-24 bg-white dark:bg-brand-black border-b border-neutral-200 dark:border-white/10 reveal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-xl mx-auto space-y-3 mb-16 title-reveal"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold fly-badge inline-block">Sacred Escape</span>
+    <h2 class="font-serif text-3xl sm:text-4xl font-light text-neutral-950 dark:text-brand-cream fly-text">Guided Meditation Timer</h2>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-6 space-y-6">
+    <h3 class="text-xl font-bold">The Slow Down Soaking Protocol</h3>
+    <p class="text-neutral-500 dark:text-white/40 text-sm">Light a candle, turn off harsh lights, add your bath salts, and follow the synchronized breathing cycle below.</p>
+    <div class="space-y-4">
+    <div class="flex gap-4 p-4 border border-neutral-200 dark:border-neutral-800 transition-colors duration-300 hover:border-gold"><span class="font-bold text-gold">01</span>
+    <p class="text-xs">Fill your tub with warm water and add 2-3 scoops of mineral salts.</p>
+    </div>
+    <div class="flex gap-4 p-4 border border-neutral-200 dark:border-neutral-800 transition-colors duration-300 hover:border-gold"><span class="font-bold text-gold">02</span>
+    <p class="text-xs">Immerse completely and trigger the breathing configuration clock.</p>
+    </div>
+    </div>
+    </div>
+    <div class="lg:col-span-6 flex justify-center">
+    <div class="bg-[#F5F2ED] dark:bg-brand-dark p-8 border border-neutral-200 dark:border-white/10 w-full max-w-md text-center space-y-6 shadow-xl">
+    <div class="relative w-48 h-48 mx-auto rounded-full flex items-center justify-center bg-white dark:bg-brand-black border border-neutral-200 dark:border-white/10 shadow-inner overflow-hidden">
+    <div id="breath-ripple" class="absolute w-36 h-36 rounded-full bg-gold/10 scale-100 transition-all duration-[4000ms] ease-in-out"></div>
+    <div class="z-10"><span id="breath-phase" class="block font-mono text-[9px] tracking-widest uppercase text-neutral-400 transition-colors duration-300">Ready</span> <span id="timer-display" class="block font-serif text-4xl text-neutral-950 dark:text-brand-cream font-medium">2:00</span></div>
+    </div>
+    <div class="flex justify-center gap-4"><button onclick="resetTimer()" class="p-3 bg-white dark:bg-brand-black text-neutral-500 border border-neutral-200 dark:border-white/10 hover:text-gold active:scale-95 transition-all"><i data-lucide="refresh-cw" class="w-4 h-4"></i></button> <button onclick="toggleTimer()" id="btn-timer-control" class="px-6 py-3.5 bg-gold text-brand-black text-xs uppercase tracking-widest font-bold hover:bg-gold/90 hover:shadow-lg transition-all active:scale-98">Begin Soaking</button></div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+
+    <!-- INGREDIENTS SECTION -->
+    <section id="ingredients" class="py-24 bg-white dark:bg-brand-black border-b border-neutral-200 dark:border-white/10 reveal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-xl mx-auto space-y-3 mb-16 title-reveal"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold fly-badge inline-block">Pure Formulation</span>
+    <h2 class="font-serif text-3xl sm:text-4xl font-light text-neutral-950 dark:text-brand-cream fly-text">Nature's Finest Elements</h2>
+    </div>
+    <div id="ingredients-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-24 bg-white dark:bg-brand-black reveal">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <div class="text-center space-y-3 mb-16 title-reveal"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold fly-badge inline-block">Common Inquiries</span>
+    <h2 class="font-serif text-3xl font-light text-neutral-950 dark:text-brand-cream fly-text">Frequently Asked Questions</h2>
+    </div>
+    <div id="faq-container" class="space-y-4"></div>
+    </div>
+    </section>
 </div>
-<div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-4"><button onclick="scrollToSection('collections')" class="bg-gold text-brand-black px-8 py-4 text-xs uppercase tracking-[0.2em] font-bold shadow-md hover:bg-gold/90 hover:shadow-xl hover:shadow-gold/20 active:scale-98 transition-all duration-300 inline-flex items-center gap-2 group"> <span>Discover Your Ritual</span> <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i> </button>
-<div class="flex items-center justify-center space-x-3 px-8 py-4 border border-neutral-300 dark:border-white/10 bg-white/50 dark:bg-brand-dark text-xs font-semibold text-neutral-800 dark:text-brand-cream">
-<div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-<span class="text-[10px] uppercase tracking-widest font-mono">Natural &amp; Organic</span></div>
-</div>
-</div>
-<div class="lg:col-span-5 relative animate-float">
-<div class="relative border border-neutral-300 dark:border-white/10 bg-white dark:bg-brand-dark p-4 shadow-xl overflow-hidden group">
-    <img id="img-hero" src="images/6.jpeg" alt="IVARA Luxury Bathing Salts" class="w-full h-[320px] sm:h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" />
-<div class="absolute bottom-8 right-8 backdrop-blur-md bg-[#0A0A0A]/80 border border-white/10 px-4 py-2.5 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold animate-ping"></span> <span class="font-mono text-[9px] tracking-[0.2em] text-gold uppercase font-medium">IVARA PURE MINERALS</span></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- ABOUT SECTION -->
-<section id="about" class="bg-white dark:bg-brand-black py-24 border-b border-neutral-200 dark:border-white/10 reveal">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start pb-20">
-<div class="lg:col-span-5 space-y-4 title-reveal"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold fly-badge inline-block">Our Foundations</span>
-<h2 class="font-serif text-3xl sm:text-4xl font-light italic text-neutral-950 dark:text-brand-cream fly-text">The Sacred Origin of <span class="not-italic font-bold">Ivara</span></h2>
-<div class="h-[1px] w-16 bg-gold fly-line"></div>
-</div>
-<div class="lg:col-span-7 space-y-6 text-neutral-700 dark:text-white/60 text-sm sm:text-base leading-relaxed pt-6 lg:pt-0">
-<p class="font-medium text-neutral-900 dark:text-brand-cream text-base">At Ivara, we believe that self-care helps modern balance.</p>
-<p>Inspired by nature and ancient wellness traditions, Ivara brings the therapeutic power of mineral-rich bath treatments into active lifestyles.</p>
-<p>Every blend is meticulously handcrafted using premium minerals selected for targeted biological and emotional benefits. Whether you seek release after a stressful day, relief from muscle tightness, or an uninterrupted sanctuary of peace, our products elevate bathing into a sacred daily ritual.</p>
-</div>
-</div>
-<div class="pt-16 pb-6">
-<div class="bg-[#F5F2ED] dark:bg-brand-dark border border-neutral-200 dark:border-white/10 p-8 sm:p-12 transition-all duration-300 hover:shadow-inner">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-<div class="lg:col-span-4 space-y-4 title-reveal"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold fly-badge inline-block">Why Bathing Salts?</span>
-<h3 class="font-serif text-3xl font-light text-neutral-950 dark:text-brand-cream fly-text">Therapeutic Luxury</h3>
-<p class="font-sans text-xs sm:text-sm text-neutral-500 dark:text-white/40 leading-relaxed">A warm bath infused with mineral-rich salts is an ancient bio-active therapy that replenishes the body.</p>
-</div>
-<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-<div class="flex gap-4 items-start bg-white/50 dark:bg-[#141414]/50 p-5 border border-neutral-200 dark:border-white/10 transition-transform duration-300 hover:-translate-y-1 hover:bg-white dark:hover:bg-brand-slate"><i data-lucide="check" class="text-gold w-4 h-4 shrink-0 mt-0.5"></i>
-<div>
-<h4 class="font-serif text-base font-medium text-neutral-950 dark:text-brand-cream">Relieves Stress &amp; Anxiety</h4>
-<p class="font-sans text-xs text-neutral-500 dark:text-white/40 mt-1">Creates a calming sanctuary atmosphere that releases physical and mental tension.</p>
-</div>
-</div>
-<div class="flex gap-4 items-start bg-white/50 dark:bg-[#141414]/50 p-5 border border-neutral-200 dark:border-white/10 transition-transform duration-300 hover:-translate-y-1 hover:bg-white dark:hover:bg-brand-slate"><i data-lucide="check" class="text-gold w-4 h-4 shrink-0 mt-0.5"></i>
-<div>
-<h4 class="font-serif text-base font-medium text-neutral-950 dark:text-brand-cream">Supports Better Sleep</h4>
-<p class="font-sans text-xs text-neutral-500 dark:text-white/40 mt-1">Allows the muscles to relax and prepares the nervous system for deep sleep.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- PRODUCT COLLECTIONS SECTION -->
-<section id="collections" class="py-24 bg-white dark:bg-brand-black border-b border-neutral-200 dark:border-white/10 reveal">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center max-w-xl mx-auto space-y-3 mb-16 title-reveal"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold fly-badge inline-block">Signature Blends</span>
-<h2 class="font-serif text-3xl sm:text-4xl font-light text-neutral-950 dark:text-brand-cream fly-text">Discover Your Perfect Blend</h2>
-</div>
-<!-- Cards Container dynamically handled by JS -->
-<div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-</div>
-</section>
-<!-- RITUAL GUIDE SECTION -->
-<section id="rituals" class="py-24 bg-white dark:bg-brand-black border-b border-neutral-200 dark:border-white/10 reveal">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center max-w-xl mx-auto space-y-3 mb-16 title-reveal"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold fly-badge inline-block">Sacred Escape</span>
-<h2 class="font-serif text-3xl sm:text-4xl font-light text-neutral-950 dark:text-brand-cream fly-text">Guided Meditation Timer</h2>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-<div class="lg:col-span-6 space-y-6">
-<h3 class="text-xl font-bold">The Slow Down Soaking Protocol</h3>
-<p class="text-neutral-500 dark:text-white/40 text-sm">Light a candle, turn off harsh lights, add your bath salts, and follow the synchronized breathing cycle below.</p>
-<div class="space-y-4">
-<div class="flex gap-4 p-4 border border-neutral-200 dark:border-neutral-800 transition-colors duration-300 hover:border-gold"><span class="font-bold text-gold">01</span>
-<p class="text-xs">Fill your tub with warm water and add 2-3 scoops of mineral salts.</p>
-</div>
-<div class="flex gap-4 p-4 border border-neutral-200 dark:border-neutral-800 transition-colors duration-300 hover:border-gold"><span class="font-bold text-gold">02</span>
-<p class="text-xs">Immerse completely and trigger the breathing configuration clock.</p>
-</div>
-</div>
-</div>
-<div class="lg:col-span-6 flex justify-center">
-<div class="bg-[#F5F2ED] dark:bg-brand-dark p-8 border border-neutral-200 dark:border-white/10 w-full max-w-md text-center space-y-6 shadow-xl">
-<div class="relative w-48 h-48 mx-auto rounded-full flex items-center justify-center bg-white dark:bg-brand-black border border-neutral-200 dark:border-white/10 shadow-inner overflow-hidden">
-<div id="breath-ripple" class="absolute w-36 h-36 rounded-full bg-gold/10 scale-100 transition-all duration-[4000ms] ease-in-out"></div>
-<div class="z-10"><span id="breath-phase" class="block font-mono text-[9px] tracking-widest uppercase text-neutral-400 transition-colors duration-300">Ready</span> <span id="timer-display" class="block font-serif text-4xl text-neutral-950 dark:text-brand-cream font-medium">2:00</span></div>
-</div>
-<div class="flex justify-center gap-4"><button onclick="resetTimer()" class="p-3 bg-white dark:bg-brand-black text-neutral-500 border border-neutral-200 dark:border-white/10 hover:text-gold active:scale-95 transition-all"><i data-lucide="refresh-cw" class="w-4 h-4"></i></button> <button onclick="toggleTimer()" id="btn-timer-control" class="px-6 py-3.5 bg-gold text-brand-black text-xs uppercase tracking-widest font-bold hover:bg-gold/90 hover:shadow-lg transition-all active:scale-98">Begin Soaking</button></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- INGREDIENTS SECTION -->
-<section id="ingredients" class="py-24 bg-white dark:bg-brand-black border-b border-neutral-200 dark:border-white/10 reveal">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center max-w-xl mx-auto space-y-3 mb-16 title-reveal"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold fly-badge inline-block">Pure Formulation</span>
-<h2 class="font-serif text-3xl sm:text-4xl font-light text-neutral-950 dark:text-brand-cream fly-text">Nature's Finest Elements</h2>
-</div>
-<div id="ingredients-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-</div>
-</section>
-<!-- FAQ SECTION -->
-<section id="faq" class="py-24 bg-white dark:bg-brand-black reveal">
-<div class="max-w-3xl mx-auto px-4 sm:px-6">
-<div class="text-center space-y-3 mb-16 title-reveal"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold fly-badge inline-block">Common Inquiries</span>
-<h2 class="font-serif text-3xl font-light text-neutral-950 dark:text-brand-cream fly-text">Frequently Asked Questions</h2>
-</div>
-<div id="faq-container" class="space-y-4"></div>
-</div>
-</section>
+
 <!-- GLOBAL SCRIPTS & CONFIGURATION -->
 <script>
         const IMAGE_CONFIG = {
@@ -298,7 +324,7 @@
             PRODUCTS.forEach(p => {
                 const imgSrc = IMAGE_CONFIG.products[p.id] || IMAGE_CONFIG.heroBanner;
                 productGrid.innerHTML += `
-                    <div class="bg-[#F5F2ED]/40 dark:bg-brand-dark border border-neutral-200 dark:border-white/10 p-6 flex flex-col justify-between transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-xl group">
+                    <div class="bg-[#F5F2ED]/40 dark:bg-brand-dark border border-neutral-200 dark:border-white/10 p-6 flex flex-col justify-between transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-xl group reveal">
                         <div>
                             <div class="relative overflow-hidden aspect-square border border-neutral-300 dark:border-white/10 bg-white dark:bg-brand-black p-3">
                                 <img src="${imgSrc}" alt="${p.name}" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
@@ -327,7 +353,7 @@
             const ingGrid = document.getElementById('ingredients-grid');
             INGREDIENTS.forEach(ing => {
                 ingGrid.innerHTML += `
-                    <div class="bg-[#F5F2ED]/40 dark:bg-brand-dark border border-neutral-200 dark:border-white/10 p-6 transition-all duration-300 hover:border-gold hover:shadow-md group">
+                    <div class="bg-[#F5F2ED]/40 dark:bg-brand-dark border border-neutral-200 dark:border-white/10 p-6 transition-all duration-300 hover:border-gold hover:shadow-md group reveal">
                         <div class="w-10 h-10 border border-gold/30 flex items-center justify-center text-gold mb-4 transition-transform duration-500 group-hover:rotate-12">
                             <i data-lucide="${ing.icon}"></i>
                         </div>
@@ -341,7 +367,7 @@
             const faqContainer = document.getElementById('faq-container');
             FAQS.forEach((faq, idx) => {
                 faqContainer.innerHTML += `
-                    <div class="border border-neutral-200 dark:border-white/10 bg-[#F5F2ED]/40 dark:bg-brand-dark transition-all duration-300 hover:border-neutral-300 dark:hover:border-neutral-700">
+                    <div class="border border-neutral-200 dark:border-white/10 bg-[#F5F2ED]/40 dark:bg-brand-dark transition-all duration-300 hover:border-neutral-300 dark:hover:border-neutral-700 reveal">
                         <button onclick="toggleFaq(${idx})" class="w-full text-left px-6 py-5 flex justify-between items-center font-bold">
                             <span class="text-sm">${faq.q}</span>
                             <i data-lucide="chevron-down" id="chevron-${idx}" class="w-4 h-4 transition-transform duration-300"></i>
@@ -353,11 +379,75 @@
 
             lucide.createIcons();
             initScrollReveal();
+            initLuxuryScrollEngine();
         });
 
-        // 🌊 Enhanced Intersection Observer for Container Reveals and Fly-In Headings
+        // 🌊 Native Inertial Smooth Scroll & Interaction Pipeline
+        function initLuxuryScrollEngine() {
+            const container = document.getElementById('scroll-container');
+            const progress = document.getElementById('scroll-progress');
+            const parallaxItems = document.querySelectorAll('.parallax-wrapper');
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const sections = document.querySelectorAll('section');
+
+            let currentY = 0;
+            let targetY = 0;
+            let ease = 0.075; // Control weight & momentum smoothness here
+
+            // Dynamic layout footprint allocation
+            function setBodyHeight() {
+                document.body.style.height = `${container.getBoundingClientRect().height}px`;
+            }
+            window.addEventListener('resize', setBodyHeight);
+            setTimeout(setBodyHeight, 500);
+
+            // Interpolated updates loop
+            function smoothScrollLoop() {
+                targetY = window.scrollY;
+                currentY += (targetY - currentY) * ease;
+
+                // 1. Core transform positioning matrix
+                container.style.transform = `translate3d(0, ${-currentY}px, 0)`;
+
+                // 2. Linear mapping for progress bar
+                const maxScroll = document.body.scrollHeight - window.innerHeight;
+                if (maxScroll > 0) {
+                    progress.style.width = `${(currentY / maxScroll) * 100}%`;
+                }
+
+                // 3. Image Parallax calculations
+                parallaxItems.forEach(item => {
+                    const speed = parseFloat(item.getAttribute('data-speed')) || -1.0;
+                    const offset = (currentY - item.offsetTop) * (speed * 0.05);
+                    item.style.transform = `translate3d(0, ${offset}px, 0)`;
+                });
+
+                // 4. Clean dynamic top active styling selector logic
+                let currentActiveSection = "";
+                sections.forEach(sec => {
+                    const top = sec.offsetTop - 120;
+                    if (currentY >= top) {
+                        currentActiveSection = sec.getAttribute('id');
+                    }
+                });
+
+                navButtons.forEach(btn => {
+                    btn.classList.remove('text-gold', 'after:scale-x-100');
+                    btn.classList.add('text-neutral-500', 'dark:text-white/60', 'after:scale-x-0');
+                    const targetAttr = btn.getAttribute('onclick');
+                    if(targetAttr && targetAttr.includes(currentActiveSection)) {
+                        btn.classList.add('text-gold', 'after:scale-x-100');
+                        btn.classList.remove('text-neutral-500', 'dark:text-white/60', 'after:scale-x-0');
+                    }
+                });
+
+                requestAnimationFrame(smoothScrollLoop);
+            }
+            requestAnimationFrame(smoothScrollLoop);
+        }
+
+        // Enhanced Intersection Observer for Container Reveals
         function initScrollReveal() {
-            // Standard Containers
             const reveals = document.querySelectorAll('.reveal');
             const containerObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -365,10 +455,9 @@
                         entry.target.classList.add('active');
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.05 });
             reveals.forEach(el => containerObserver.observe(el));
 
-            // Specialized Fly & Zoom Title Target Blocks
             const headers = document.querySelectorAll('.title-reveal');
             const headerObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -376,12 +465,23 @@
                         entry.target.classList.add('active');
                     }
                 });
-            }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+            }, { threshold: 0.1 });
             headers.forEach(el => headerObserver.observe(el));
+            
+            // Instantly activate first layout layer visible on load
+            setTimeout(() => {
+                if(headers[0]) headers[0].classList.add('active');
+            }, 200);
         }
 
         function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+            const targetSection = document.getElementById(id);
+            if(targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop - 40,
+                    behavior: 'smooth'
+                });
+            }
             document.getElementById('mobile-menu').classList.add('hidden');
         }
 
@@ -407,6 +507,7 @@
             const chevron = document.getElementById(`chevron-${idx}`);
             ans.classList.toggle('hidden');
             chevron.classList.toggle('rotate-180');
+            setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 310);
         }
 
         // Immersive Bio-Breathe Loop Customizations
