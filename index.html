@@ -36,14 +36,14 @@
     </script>
     <style>
         body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3, h4, .font-serif { font-family: 'Space Grotesk', sans-serif; }
+        h2, h3, h4, .font-serif { font-family: 'Space Grotesk', sans-serif; }
     </style>
 </head>
 <body class="bg-white text-neutral-800 dark:bg-brand-black dark:text-neutral-100 transition-colors duration-300">
-<!-- NAVIGATION BAR --><nav class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-brand-black/90 border-b border-neutral-200 dark:border-white/10 transition-colors duration-300">
+<!-- NAVIGATION BAR -->
+<nav class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-brand-black/90 border-b border-neutral-200 dark:border-white/10 transition-colors duration-300">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex items-center justify-between h-20"><!-- Logo -->
-<div onclick="scrollToSection('home')" class="flex items-center gap-3 cursor-pointer group">
 <div onclick="scrollToSection('home')" class="flex items-center gap-3 cursor-pointer group">
 <div class="w-14 h-14 border border-gold flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
     <img src="images/logo.png" alt="Ivara Logo" class="w-14 h-14 object-contain" />
@@ -58,7 +58,8 @@
 </div>
 <!-- Mobile Drawer -->
 <div id="mobile-menu" class="hidden md:hidden border-t border-neutral-200 dark:border-white/10 bg-white dark:bg-brand-dark p-4 space-y-2"><button onclick="scrollToSection('home')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-gold bg-gold/10">Home</button> <button onclick="scrollToSection('about')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Our Story</button> <button onclick="scrollToSection('collections')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Collections</button> <button onclick="scrollToSection('rituals')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Rituals</button> <button onclick="scrollToSection('ingredients')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Ingredients</button> <button onclick="scrollToSection('faq')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">FAQ</button></div>
-</nav><!-- HERO SECTION -->
+</nav>
+<!-- HERO SECTION -->
 <section id="home" class="relative overflow-hidden pt-12 pb-20 md:py-28 bg-[#F5F2ED] dark:bg-brand-black border-b border-neutral-200 dark:border-white/10 transition-colors duration-500">
 <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(197,160,89,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(197,160,89,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none"></div>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -189,26 +190,67 @@
 <script>
         // ==========================================
         // 📸 CENTRALIZED IMAGE CONFIGURATION
-        // Modify these paths to replace your photos
         // ==========================================
         const IMAGE_CONFIG = {
             heroBanner: 'images/6.jpeg',
             products: {
                 'rose-serenity': 'images/1.jpg',
                 'lavender-dreams': 'images/9.jpeg',
-                'himalayan-detox': 'images/3.png',
-                'ocean-bliss': 'images/4.png',
-                'jasmine-divine': 'images/5.jpg'
+                'cinnamon-magic': 'images/cinnamon.jpg',
+                'camphor-clarity': 'images/camphor.jpg',
+                'mint-mystique': 'images/mint.jpg',
+                'velvet-vanilla': 'images/vanilla.jpg'
             }
         };
 
         // Static Structural Data Setup
         const PRODUCTS = [
-            { id: 'rose-serenity', name: 'Rose Serenity', tagline: 'Deep relaxation & self-love rituals', description: 'A luxurious blend infused with real organic rose petals and botanical floral essential oils.', bestFor: 'Stress relief and self-love rituals' },
-            { id: 'lavender-dreams', name: 'Lavender Dreams', tagline: 'Unwind & prepare for restful sleep', description: 'Prepare your mind and body for deep, restorative sleep with pure Bulgarian lavender extracts.', bestFor: 'Bedtime preparation' },
-            { id: 'himalayan-detox', name: 'Himalayan Detox', tagline: 'Purification, renewal & mineral replenishment', description: 'Rich Himalayan pink salt blended specifically for purification, renewal, and deep muscle recovery.', bestFor: 'Post-workout recovery' },
-            { id: 'ocean-bliss', name: 'Ocean Bliss', tagline: 'Therapeutic power of ocean minerals', description: 'Formulated with mineral-dense dead sea salts and crisp marine botanicals to hydrate the skin.', bestFor: 'Weekend wellness rituals' },
-            { id: 'jasmine-divine', name: 'Jasmine Divine', tagline: 'Uplifting floral elegance & emotional balance', description: 'An enchanting, exotic floral blend designed to inspire joy, creativity, and inner strength.', bestFor: 'Mindful self-care moments' }
+            { id: 'rose-serenity', name: 'Rose Serenity', collection: 'Signature Blends', tagline: 'Deep relaxation & self-love rituals', description: 'A luxurious blend infused with real organic rose petals and botanical floral essential oils.', biological: 'Reduces surface redness, balances natural hydration.', emotional: 'Encourages emotional release and heart-opening serenity.', keyElements: 'Premium Salts, Organic Rose Petals', bestFor: 'Stress relief and self-love rituals' },
+            { id: 'lavender-dreams', name: 'Lavender Dreams', collection: 'Signature Blends', tagline: 'Unwind & prepare for restful sleep', description: 'Prepare your mind and body for deep, restorative sleep with pure Bulgarian lavender extracts.', biological: 'Calms systemic heart rate, targets nervous pacing.', emotional: 'Soothes continuous over-thinking before evening routines.', keyElements: 'Epsom Salt, Lavender Essential Oil', bestFor: 'Bedtime preparation' },
+            { 
+                id: 'cinnamon-magic', 
+                name: 'Cinnamon Magic', 
+                collection: 'Signature Blends', 
+                tagline: 'The Warming Revival', 
+                description: 'A deeply grounding, bio-active mineral blend crafted to stimulate circulation and envelop the senses in comforting warmth. Infused with organic Ceylon cinnamon bark and rich botanicals, this blend melts away deep muscle fatigue while fostering a sense of emotional security and inner fire. Perfect for cold evenings or restoring vitality after physical exhaustion.',
+                biological: 'Boosts localized circulation, eases joint stiffness, and provides metabolic comfort through natural thermal activation.',
+                emotional: 'Ignites inner warmth, combats mental fatigue, and creates a cozy, protective sanctuary.',
+                keyElements: 'Premium Dead Sea Salt, Organic Cinnamon Bark, Ground Nutmeg, Sweet Almond Oil',
+                bestFor: 'Thermal restoration and circulation enhancement'
+            },
+            { 
+                id: 'camphor-clarity', 
+                name: 'Camphor Clarity', 
+                collection: 'Signature Blends', 
+                tagline: 'The Respiratory & Muscle Release', 
+                description: 'An intense, clarifying therapy designed to open up the senses and release deep-seated physical tension. Pure camphor crystals merge with mineral-rich salts to create a potent vapor-bath experience. As the clean, sharp aroma fills the air, it works rapidly to soothe overworked muscles, clear the mind, and refresh the respiratory system after a demanding day.',
+                biological: 'Relieves severe muscle tightness, eases post-workout soreness, and supports clear, deep breathing through therapeutic vapors.',
+                emotional: 'Dispels mental fog, sharpens focus, and provides a powerful sense of renewal and release.',
+                keyElements: 'Pure Camphor Crystals, Epsom Salt (Magnesium Sulfate), Eucalyptus Leaf, Menthol Extract',
+                bestFor: 'Deep respiratory clarity and athletic recovery'
+            },
+            { 
+                id: 'mint-mystique', 
+                name: 'Mint Mystique', 
+                collection: 'Signature Blends', 
+                tagline: 'The Sacred Awakening', 
+                description: 'An ethereal, crisp blend designed to awaken the spirit and rejuvenate tired skin. Mint Mystique delivers an immediate cooling contrast to warm bathwater, stimulating the nervous system while leaving the skin feeling tingling and intensely refreshed. It serves as a sacred ritual to shift your energy, washing away lethargy and leaving you vibrant and alert.',
+                biological: 'Cools and calms skin inflammation, stimulates surface circulation, and alleviates tension headaches.',
+                emotional: 'Uplifts a heavy mood, breaks stagnant energy, and promotes a state of bright, joyful awareness.',
+                keyElements: 'Pacific Sea Salt, Wild Peppermint Essential Oil, Crushed Mint Leaves, Jojoba Oil',
+                bestFor: 'Morning rejuvenation and energy alignment'
+            },
+            { 
+                id: 'velvet-vanilla', 
+                name: 'Velvet Vanilla', 
+                collection: 'Signature Blends', 
+                tagline: 'The Ultimate Sanctuary', 
+                description: 'The pinnacle of luxury bathing—a rich, enveloping blend designed for pure emotional comfort and skin softening. Velvet Vanilla blankets your bathwater in a soothing, milky texture while filling the room with the warm, nostalgic aroma of pure vanilla bean. It slows down a racing mind and intensely nourishes the skin barrier, preparing you for a night of deep, undisturbed rest.',
+                biological: 'Deeply hydrates dry skin, softens the skin texture with natural lipids, and relaxes the nervous system for sleep.',
+                emotional: 'Induces deep relaxation, reduces anxiety, and wraps the spirit in a comforting embrace of self-love.',
+                keyElements: 'Himalayan Pink Salt, Pure Vanilla Absolute, Dehydrated Coconut Milk Powder, Organic Honey Extract',
+                bestFor: 'Intense dermal moisture and deep alignment for sleep'
+            }
         ];
 
         const INGREDIENTS = [
@@ -229,20 +271,30 @@
 
             // Render Product Grid items
             const productGrid = document.getElementById('product-grid');
+            productGrid.innerHTML = ''; // Clear previous content completely
             PRODUCTS.forEach(p => {
                 const imgSrc = IMAGE_CONFIG.products[p.id] || IMAGE_CONFIG.heroBanner;
                 productGrid.innerHTML += `
-                    <div class="bg-[#F5F2ED]/40 dark:bg-brand-dark border border-neutral-200 dark:border-white/10 p-6 flex flex-col justify-between">
-                        <div class="relative overflow-hidden aspect-square border border-neutral-300 dark:border-white/10 bg-white dark:bg-brand-black p-3">
-                            <img src="${imgSrc}" alt="${p.name}" class="w-full h-full object-cover">
-                        </div>
-                        <div class="pt-6">
-                            <h3 class="font-serif text-2xl text-neutral-950 dark:text-brand-cream font-medium">${p.name}</h3>
-                            <span class="block text-[10px] text-gold font-mono tracking-widest uppercase font-semibold mt-1">${p.tagline}</span>
-                            <p class="font-sans text-xs text-neutral-500 dark:text-white/40 mt-3 leading-relaxed">${p.description}</p>
-                            <div class="border-t border-neutral-200 dark:border-white/10 pt-4 mt-6 text-xs text-neutral-400">
-                                <strong>Best For:</strong> ${p.bestFor}
+                    <div class="bg-[#F5F2ED]/40 dark:bg-brand-dark border border-neutral-200 dark:border-white/10 p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-lg">
+                        <div>
+                            <div class="relative overflow-hidden aspect-square border border-neutral-300 dark:border-white/10 bg-white dark:bg-brand-black p-3">
+                                <img src="${imgSrc}" alt="${p.name}" class="w-full h-full object-cover">
                             </div>
+                            <div class="pt-6">
+                                <span class="text-[10px] text-neutral-400 font-mono tracking-widest uppercase block mb-1">${p.collection || 'Signature Blends'}</span>
+                                <h3 class="font-serif text-2xl text-neutral-950 dark:text-brand-cream font-medium">${p.name}</h3>
+                                <span class="block text-[10px] text-gold font-mono tracking-widest uppercase font-semibold mt-1">${p.tagline}</span>
+                                <p class="font-sans text-xs text-neutral-500 dark:text-white/40 mt-3 leading-relaxed">${p.description}</p>
+                                
+                                <div class="mt-4 pt-4 border-t border-neutral-200 dark:border-neutral-800 space-y-2 text-xs">
+                                    <div class="text-neutral-600 dark:text-neutral-400"><strong class="text-neutral-800 dark:text-neutral-200">Biological:</strong> ${p.biological}</div>
+                                    <div class="text-neutral-600 dark:text-neutral-400"><strong class="text-neutral-800 dark:text-neutral-200">Emotional:</strong> ${p.emotional}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-t border-neutral-200 dark:border-white/10 pt-4 mt-6 text-xs text-neutral-400 space-y-1">
+                            <div><strong>Key Elements:</strong> <span class="text-neutral-500 dark:text-white/50">${p.keyElements}</span></div>
+                            <div class="pt-1"><strong>Best For:</strong> ${p.bestFor}</div>
                         </div>
                     </div>
                 `;
