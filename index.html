@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IVARAA The Divine Blessings | Premium Bathing Salts & Rituals</title>
-    <meta name="description" content="IVARAA premium bathing salts and sacred self-care rituals. Follow @vneta.300 for our latest products, rituals and wellness moments.">
+    <meta name="description" content="IVARAA premium bathing salts and sacred self-care rituals. Follow @ivaraa_the_divine_blessings for our latest products, rituals and wellness moments.">
     <!-- Tailwind CSS Play CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter & Space Grotesk -->
@@ -60,6 +60,73 @@
         #scroll-container {
             will-change: auto;
             transform: none !important;
+        }
+
+
+        /* Compact, balanced section spacing */
+        #scroll-container { padding-top: 80px; }
+        #home {
+            padding-top: 64px !important;
+            padding-bottom: 64px !important;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+        }
+        #home > .max-w-7xl { width: 100%; }
+        section:not(#home):not(#footer) {
+            padding-top: 64px !important;
+            padding-bottom: 64px !important;
+        }
+        @media (max-width: 767px) {
+            #home {
+                padding-top: 40px !important;
+                padding-bottom: 48px !important;
+                min-height: auto;
+            }
+            section:not(#home):not(#footer) {
+                padding-top: 48px !important;
+                padding-bottom: 48px !important;
+            }
+        }
+
+        /* Social icons in the top navigation */
+        .top-socials {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .social-icon {
+            width: 34px;
+            height: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(0,0,0,.12);
+            color: #555;
+            transition: all .25s ease;
+        }
+        .social-icon:hover {
+            color: #c5a059;
+            border-color: #c5a059;
+            transform: translateY(-1px);
+        }
+        .dark .social-icon {
+            border-color: rgba(255,255,255,.12);
+            color: rgba(255,255,255,.75);
+        }
+        .social-icon svg {
+            width: 16px;
+            height: 16px;
+        }
+        .footer-socials {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .footer-socials .social-icon {
+            border-color: rgba(255,255,255,.15);
+            color: rgba(255,255,255,.7);
         }
 
         /* Custom dynamic mesh gradient background for Hero */
@@ -156,6 +223,11 @@
                 animation: none !important;
             }
         }
+    
+        @media (max-width: 520px) {
+            .top-socials { display: none; }
+        }
+
     </style>
 </head>
 <body class="bg-white text-neutral-800 dark:bg-brand-black dark:text-neutral-100 transition-colors duration-300">
@@ -186,6 +258,29 @@
     <button onclick="scrollToSection('faq')" class="nav-btn font-sans text-[11px] uppercase tracking-[0.18em] font-medium text-neutral-500 dark:text-white/60 hover:text-gold transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 hover:after:scale-x-100 after:h-[1px] after:bottom-0 after:left-0 after:bg-gold after:transition-transform">FAQ</button>
 </div>
 <!-- Controls -->
+
+<div class="top-socials" aria-label="Social links">
+    <a href="https://www.@ivaraa_the_divine_blessings" target="_blank" rel="noopener noreferrer"
+       class="social-icon" aria-label="Instagram" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"></circle>
+        </svg>
+    </a>
+    <a href="#" onclick="return false;" class="social-icon" aria-label="Facebook" title="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M13.5 21v-8h2.8l.4-3h-3.2V8.1c0-.9.3-1.6 1.7-1.6h1.8V3.8c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.5v3h2.8v8h3.2z"></path>
+        </svg>
+    </a>
+    <a href="#" onclick="return false;" class="social-icon" aria-label="Email" title="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="m4 7 8 6 8-6"></path>
+        </svg>
+    </a>
+</div>
+
 <div class="flex items-center gap-4"><button onclick="toggleDarkMode()" class="p-2.5 rounded-full hover:bg-neutral-100 dark:hover:bg-brand-slate transition-transform active:scale-95 text-neutral-600 dark:text-neutral-300"> <i data-lucide="moon" id="theme-icon" class="w-4 h-4 text-neutral-600 dark:text-gold transition-transform duration-300"></i> </button> <button onclick="scrollToSection('collections')" class="hidden sm:inline-block px-5 py-2 border border-neutral-300 dark:border-white/20 text-[9px] uppercase tracking-[0.15em] font-medium hover:bg-gold hover:text-brand-black hover:border-gold hover:shadow-lg hover:shadow-gold/10 active:scale-98 transition-all duration-300">Shop Now</button> <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 text-neutral-600 dark:text-neutral-300"> <i data-lucide="menu" id="menu-icon" class="w-5 h-5"></i> </button></div>
 </div>
 </div>
@@ -404,7 +499,7 @@
             <!--
                 INSTAGRAM WIDGET INSERTION POINT
                 --------------------------------
-                Create an Instagram Profile/Grid widget for @vneta.300 with your chosen
+                Create an Instagram Profile/Grid widget for @ivaraa_the_divine_blessings with your chosen
                 feed provider, then paste the provider's generated embed code below.
 
                 Recommended starting option:
@@ -532,14 +627,36 @@
 
                 <div>
                     <h3 class="text-[10px] uppercase tracking-[0.25em] text-[#c5a059] font-semibold mb-5">Connect</h3>
-                    <a href="https://www.instagram.com/vneta.300/" target="_blank" rel="noopener noreferrer"
+                    <a href="https://www.instagram.com/vneta.300/" target="@ivaraa_the_divine_blessings" rel="noopener noreferrer"
                        class="inline-flex items-center gap-2 text-xs text-white/60 hover:text-[#c5a059] transition-colors">
                         <i data-lucide="instagram" class="w-4 h-4"></i>
-                        @vneta.300
+                        @ivaraa_the_divine_blessings
                     </a>
                     <p class="text-xs text-white/40 mt-4">
                         For orders and enquiries, use the WhatsApp order form above.
                     </p>
+                    <div class="footer-socials" aria-label="Social links">
+                        <a href="@ivaraa_the_divine_blessings" target="_blank" rel="noopener noreferrer"
+                           class="social-icon" aria-label="Instagram" title="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                <rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect>
+                                <circle cx="12" cy="12" r="4"></circle>
+                                <circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"></circle>
+                            </svg>
+                        </a>
+                        <a href="#" onclick="return false;" class="social-icon" aria-label="Facebook" title="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M13.5 21v-8h2.8l.4-3h-3.2V8.1c0-.9.3-1.6 1.7-1.6h1.8V3.8c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.5v3h2.8v8h3.2z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" onclick="return false;" class="social-icon" aria-label="Email" title="Email">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                                <path d="m4 7 8 6 8-6"></path>
+                            </svg>
+                        </a>
+                    </div>
+
                 </div>
             </div>
 
@@ -744,7 +861,7 @@
             if (!targetSection) return;
 
             const navHeight = document.querySelector('nav')?.offsetHeight || 80;
-            const targetY = targetSection.getBoundingClientRect().top + window.scrollY - navHeight - 12;
+            const targetY = targetSection.getBoundingClientRect().top + window.scrollY - navHeight - 4;
 
             window.scrollTo({
                 top: Math.max(0, targetY),
