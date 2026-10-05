@@ -53,18 +53,12 @@
         body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
         h2, h3, h4, .font-serif { font-family: 'Space Grotesk', sans-serif; }
         
-        /* Native page scrolling
-           The previous version transformed the entire page and manually
-           changed body height. That could leave a large empty area after FAQ.
-           Keep the document in normal flow so the footer always follows FAQ. */
         #scroll-container {
             will-change: auto;
             transform: none !important;
+            padding-top: 80px;
         }
 
-
-        /* Compact, balanced section spacing */
-        #scroll-container { padding-top: 80px; }
         #home {
             padding-top: 64px !important;
             padding-bottom: 64px !important;
@@ -151,7 +145,7 @@
             transform: translateY(0);
         }
 
-        /* High-End Fly & Zoom Title Animations */
+        /* Title Animations */
         .title-reveal .fly-badge,
         .title-reveal .fly-text,
         .title-reveal .fly-line {
@@ -167,23 +161,19 @@
             transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Staggered triggers when active class drops */
         .title-reveal.active .fly-badge { opacity: 1; transform: translateX(0) scale(1); transition-delay: 0ms; }
         .title-reveal.active .fly-text { opacity: 1; transform: translateX(0) scale(1); transition-delay: 150ms; }
         .title-reveal.active .fly-line { opacity: 1; transform: translateX(0) scaleX(1); transition-delay: 300ms; }
 
-        /* Hardware Accelerated Parallax Containers */
         .parallax-wrapper {
             will-change: transform;
             transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Navigation anchor alignment */
         section {
             scroll-margin-top: 96px;
         }
 
-        /* IVARAA Instagram Feed */
         .instagram-feed-shell {
             min-height: 260px;
         }
@@ -227,15 +217,14 @@
         @media (max-width: 520px) {
             .top-socials { display: none; }
         }
-
     </style>
 </head>
 <body class="bg-white text-neutral-800 dark:bg-brand-black dark:text-neutral-100 transition-colors duration-300">
 
-<!-- 🚀 Minimalist Top Scroll Progress Bar -->
+<!-- Top Scroll Progress Bar -->
 <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-gold z-[60] w-0 transition-all duration-100 ease-out pointer-events-none"></div>
 
-<!-- NAVIGATION BAR (Fixed out of scroll canvas context) -->
+<!-- NAVIGATION BAR -->
 <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/80 dark:bg-brand-black/90 border-b border-neutral-200 dark:border-white/10 transition-colors duration-300">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex items-center justify-between h-20">
@@ -257,7 +246,6 @@
     <button onclick="scrollToSection('ingredients')" class="nav-btn font-sans text-[11px] uppercase tracking-[0.18em] font-medium text-neutral-500 dark:text-white/60 hover:text-gold transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 hover:after:scale-x-100 after:h-[1px] after:bottom-0 after:left-0 after:bg-gold after:transition-transform">Ingredients</button> 
     <button onclick="scrollToSection('faq')" class="nav-btn font-sans text-[11px] uppercase tracking-[0.18em] font-medium text-neutral-500 dark:text-white/60 hover:text-gold transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 hover:after:scale-x-100 after:h-[1px] after:bottom-0 after:left-0 after:bg-gold after:transition-transform">FAQ</button>
 </div>
-<!-- Controls -->
 
 <div class="top-socials" aria-label="Social links">
     <a href="https://www.instagram.com/ivaraa_the_divine_blessings/" target="_blank" rel="noopener noreferrer"
@@ -281,15 +269,32 @@
     </a>
 </div>
 
-<div class="flex items-center gap-4"><button onclick="toggleDarkMode()" class="p-2.5 rounded-full hover:bg-neutral-100 dark:hover:bg-brand-slate transition-transform active:scale-95 text-neutral-600 dark:text-neutral-300"> <i data-lucide="moon" id="theme-icon" class="w-4 h-4 text-neutral-600 dark:text-gold transition-transform duration-300"></i> </button> <button onclick="scrollToSection('collections')" class="hidden sm:inline-block px-5 py-2 border border-neutral-300 dark:border-white/20 text-[9px] uppercase tracking-[0.15em] font-medium hover:bg-gold hover:text-brand-black hover:border-gold hover:shadow-lg hover:shadow-gold/10 active:scale-98 transition-all duration-300">Shop Now</button> <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 text-neutral-600 dark:text-neutral-300"> <i data-lucide="menu" id="menu-icon" class="w-5 h-5"></i> </button></div>
+<div class="flex items-center gap-4">
+    <button onclick="toggleDarkMode()" class="p-2.5 rounded-full hover:bg-neutral-100 dark:hover:bg-brand-slate transition-transform active:scale-95 text-neutral-600 dark:text-neutral-300">
+        <i data-lucide="moon" id="theme-icon" class="w-4 h-4 text-neutral-600 dark:text-gold transition-transform duration-300"></i>
+    </button>
+    <button onclick="scrollToSection('collections')" class="hidden sm:inline-block px-5 py-2 border border-neutral-300 dark:border-white/20 text-[9px] uppercase tracking-[0.15em] font-medium hover:bg-gold hover:text-brand-black hover:border-gold hover:shadow-lg hover:shadow-gold/10 active:scale-98 transition-all duration-300">Shop Now</button>
+    <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 text-neutral-600 dark:text-neutral-300">
+        <i data-lucide="menu" id="menu-icon" class="w-5 h-5"></i>
+    </button>
+</div>
 </div>
 </div>
 <!-- Mobile Drawer -->
-<div id="mobile-menu" class="hidden md:hidden border-t border-neutral-200 dark:border-white/10 bg-white dark:bg-brand-dark p-4 space-y-2"><button onclick="scrollToSection('home')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-gold bg-gold/10">Home</button> <button onclick="scrollToSection('about')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Our Story</button> <button onclick="scrollToSection('collections')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Collections</button> <button onclick="scrollToSection('instagram')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Instagram</button> <button onclick="scrollToSection('rituals')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Rituals</button> <button onclick="scrollToSection('ingredients')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Ingredients</button> <button onclick="scrollToSection('faq')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">FAQ</button></div>
+<div id="mobile-menu" class="hidden md:hidden border-t border-neutral-200 dark:border-white/10 bg-white dark:bg-brand-dark p-4 space-y-2">
+    <button onclick="scrollToSection('home')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-gold bg-gold/10">Home</button>
+    <button onclick="scrollToSection('about')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Our Story</button>
+    <button onclick="scrollToSection('collections')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Collections</button>
+    <button onclick="scrollToSection('order')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Order</button>
+    <button onclick="scrollToSection('instagram')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Instagram</button>
+    <button onclick="scrollToSection('rituals')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Rituals</button>
+    <button onclick="scrollToSection('ingredients')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">Ingredients</button>
+    <button onclick="scrollToSection('faq')" class="w-full text-left px-4 py-3 text-xs uppercase tracking-widest font-semibold text-neutral-600 dark:text-neutral-400">FAQ</button>
+</div>
 </nav>
 
-<!-- MAIN SMOOTH SCROLL INTERACTION FRAMEWORK LAYER -->
-<div id="scroll-container" class="pt-20">
+<!-- MAIN CONTAINER -->
+<div id="scroll-container">
 
     <!-- HERO SECTION -->
     <section id="home" class="animated-mesh animate-gradient-mesh relative overflow-hidden pt-16 pb-20 md:py-32 border-b border-neutral-200 dark:border-white/10 transition-colors duration-500">
@@ -312,7 +317,6 @@
     <span class="text-[10px] uppercase tracking-widest font-mono">Natural &amp; Organic</span></div>
     </div>
     </div>
-    <!-- 🚀 Parallax Target Image Wrapper -->
     <div class="lg:col-span-5 relative animate-float parallax-wrapper" data-speed="-1.5">
     <div class="relative border border-neutral-300 dark:border-white/10 bg-white dark:bg-brand-dark p-4 shadow-xl overflow-hidden group">
         <img id="img-hero" src="images/6.jpeg" alt="IVARAA Luxury Bathing Salts" class="w-full h-[320px] sm:h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -324,192 +328,120 @@
     </section>
 
     <!-- ABOUT SECTION -->
-    <section id="about" class="bg-white dark:bg-brand-black py-24 border-b border-neutral-200 dark:border-white/10 reveal">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start pb-20">
-    <div class="lg:col-span-5 space-y-4 title-reveal"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold fly-badge inline-block">Our Foundations</span>
-    <h2 class="font-serif text-3xl sm:text-4xl font-light italic text-neutral-950 dark:text-brand-cream fly-text">The Sacred Origin of <span class="not-italic font-bold">IVARAA</span></h2>
-    <div class="h-[1px] w-16 bg-gold fly-line"></div>
-    </div>
-    <div class="lg:col-span-7 space-y-6 text-neutral-700 dark:text-white/60 text-sm sm:text-base leading-relaxed pt-6 lg:pt-0">
-    <p class="font-medium text-neutral-900 dark:text-brand-cream text-base">At IVARAA, we believe that self-care helps modern balance.</p>
-    <p>Inspired by nature and ancient wellness traditions, IVARAA brings the therapeutic power of mineral-rich bath treatments into active lifestyles.</p>
-    <p>Every blend is meticulously handcrafted using premium minerals selected for targeted biological and emotional benefits. Whether you seek release after a stressful day, relief from muscle tightness, or an uninterrupted sanctuary of peace, our products elevate bathing into a sacred daily ritual.</p>
-    </div>
-    </div>
-    <div class="pt-16 pb-6">
-    <div class="bg-[#F5F2ED] dark:bg-brand-dark border border-neutral-200 dark:border-white/10 p-8 sm:p-12 transition-all duration-300 hover:shadow-inner">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-    <div class="lg:col-span-4 space-y-4 title-reveal"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold fly-badge inline-block">Why Bathing Salts?</span>
-    <h3 class="font-serif text-3xl font-light text-neutral-950 dark:text-brand-cream fly-text">Therapeutic Luxury</h3>
-    <p class="font-sans text-xs sm:text-sm text-neutral-500 dark:text-white/40 leading-relaxed">A warm bath infused with mineral-rich salts is an ancient bio-active therapy that replenishes the body.</p>
-    </div>
-    <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-    <div class="flex gap-4 items-start bg-white/50 dark:bg-[#141414]/50 p-5 border border-neutral-200 dark:border-white/10 transition-transform duration-300 hover:-translate-y-1 hover:bg-white dark:hover:bg-brand-slate"><i data-lucide="check" class="text-gold w-4 h-4 shrink-0 mt-0.5"></i>
-    <div>
-    <h4 class="font-serif text-base font-medium text-neutral-950 dark:text-brand-cream">Relieves Stress &amp; Anxiety</h4>
-    <p class="font-sans text-xs text-neutral-500 dark:text-white/40 mt-1">Creates a calming sanctuary atmosphere that releases physical and mental tension.</p>
-    </div>
-    </div>
-    <div class="flex gap-4 items-start bg-white/50 dark:bg-[#141414]/50 p-5 border border-neutral-200 dark:border-white/10 transition-transform duration-300 hover:-translate-y-1 hover:bg-white dark:hover:bg-brand-slate"><i data-lucide="check" class="text-gold w-4 h-4 shrink-0 mt-0.5"></i>
-    <div>
-    <h4 class="font-serif text-base font-medium text-neutral-950 dark:text-brand-cream">Supports Better Sleep</h4>
-    <p class="font-sans text-xs text-neutral-500 dark:text-white/40 mt-1">Allows the muscles to relax and prepares the nervous system for deep sleep.</p>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </section>
-
-    <!-- PRODUCT COLLECTIONS SECTION -->
-    <section id="collections" class="py-24 bg-white dark:bg-brand-black border-b border-neutral-200 dark:border-white/10 reveal">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-xl mx-auto space-y-3 mb-16 title-reveal"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold fly-badge inline-block">Signature Blends</span>
-    <h2 class="font-serif text-3xl sm:text-4xl font-light text-neutral-950 dark:text-brand-cream fly-text">Discover Your Perfect Blend</h2>
-    </div>
-    <!-- Cards Container dynamically handled by JS -->
-    <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-    </div>
-    </section>
-
-
-
-    <!-- WHATSAPP ORDER SECTION -->
-    <section id="order" class="py-24 bg-white dark:bg-brand-black border-b border-neutral-200 dark:border-white/10 reveal">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6">
-            <div class="bg-[#F5F2ED] dark:bg-brand-dark border border-neutral-200 dark:border-white/10 p-6 sm:p-10 shadow-sm">
-                <div class="max-w-3xl mx-auto">
-                    <span class="font-mono text-[10px] text-gold uppercase tracking-[0.3em] font-semibold">
-                        Quick Order on WhatsApp
-                    </span>
-                    <h2 class="font-serif text-4xl sm:text-5xl leading-tight font-light italic text-neutral-950 dark:text-brand-cream mt-2">
-                        Begin Your Ritual Here
-                    </h2>
-                    <p class="text-xs sm:text-sm text-neutral-600 dark:text-white/50 mt-3 mb-7">
-                        Fill in the details and IVARAA will prepare a WhatsApp order message for you.
-                    </p>
-
-                    <form id="whatsapp-order-form" class="space-y-4" onsubmit="sendWhatsAppOrder(event)">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-[9px] font-semibold mb-1.5">Name *</label>
-                                <input id="order-name" required type="text" placeholder="Your name"
-                                    class="w-full h-11 px-3 border border-[#d8c7b5] dark:border-white/20 bg-white dark:bg-brand-black text-xs outline-none focus:border-gold transition-colors">
+    <section id="about" class="bg-white dark:bg-brand-black py-24 border-b border-neutral-200 dark:border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start pb-20">
+                <div class="lg:col-span-5 space-y-4">
+                    <span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold">Our Foundations</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-light italic text-neutral-950 dark:text-brand-cream">The Sacred Origin of <span class="not-italic font-bold">Ivara</span></h2>
+                    <div class="h-[1px] w-16 bg-gold"></div>
+                </div>
+                <div class="lg:col-span-7 space-y-6 text-neutral-700 dark:text-white/60 text-sm sm:text-base leading-relaxed">
+                    <p class="font-medium text-neutral-900 dark:text-brand-cream text-base">At Ivara, we believe that self-care helps modern balance.</p>
+                    <p>Inspired by nature and ancient wellness traditions, Ivara brings the therapeutic power of mineral-rich bath treatments into active lifestyles.</p>
+                    <p>Every blend is meticulously handcrafted using premium minerals selected for targeted biological and emotional benefits. Whether you seek release after a stressful day, relief from muscle tightness, or an uninterrupted sanctuary of peace, our products elevate bathing into a sacred daily ritual.</p>
+                </div>
+            </div>
+            <div class="pt-16 pb-6">
+                <div class="bg-[#F5F2ED] dark:bg-brand-dark border border-neutral-200 dark:border-white/10 p-8 sm:p-12">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        <div class="lg:col-span-4 space-y-4">
+                            <span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold">Why Bathing Salts?</span>
+                            <h3 class="font-serif text-3xl font-light text-neutral-950 dark:text-brand-cream">Therapeutic Luxury</h3>
+                            <p class="font-sans text-xs sm:text-sm text-neutral-500 dark:text-white/40 leading-relaxed">A warm bath infused with mineral-rich salts is an ancient bio-active therapy that replenishes the body.</p>
+                        </div>
+                        <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="flex gap-4 items-start bg-white/50 dark:bg-[#141414]/50 p-5 border border-neutral-200 dark:border-white/10">
+                                <i data-lucide="check" class="text-gold w-4 h-4 shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h4 class="font-serif text-base font-medium text-neutral-950 dark:text-brand-cream">Relieves Stress &amp; Anxiety</h4>
+                                    <p class="font-sans text-xs text-neutral-500 dark:text-white/40 mt-1">Creates a calming sanctuary atmosphere that releases physical and mental tension.</p>
+                                </div>
                             </div>
-                            <div>
-                                <label class="block text-[9px] font-semibold mb-1.5">Mobile Number *</label>
-                                <input id="order-mobile" required type="tel" inputmode="tel" placeholder="Your mobile"
-                                    class="w-full h-11 px-3 border border-[#d8c7b5] dark:border-white/20 bg-white dark:bg-brand-black text-xs outline-none focus:border-gold transition-colors">
-                            </div>
-                            <div>
-                                <label class="block text-[9px] font-semibold mb-1.5">Bath Salt / Blend *</label>
-                                <select id="order-product" required
-                                    class="w-full h-11 px-3 border border-[#d8c7b5] dark:border-white/20 bg-white dark:bg-brand-black text-xs outline-none focus:border-gold transition-colors">
-                                    <option value="">Select a blend</option>
-                                    <option>Rose Serenity</option>
-                                    <option>Lavender Dreams</option>
-                                    <option>Cinnamon Magic</option>
-                                    <option>Camphor Clarity</option>
-                                    <option>Mint Mystique</option>
-                                    <option>Velvet Vanilla</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-[9px] font-semibold mb-1.5">Quantity *</label>
-                                <select id="order-quantity" required
-                                    class="w-full h-11 px-3 border border-[#d8c7b5] dark:border-white/20 bg-white dark:bg-brand-black text-xs outline-none focus:border-gold transition-colors">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                </select>
+                            <div class="flex gap-4 items-start bg-white/50 dark:bg-[#141414]/50 p-5 border border-neutral-200 dark:border-white/10">
+                                <i data-lucide="check" class="text-gold w-4 h-4 shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h4 class="font-serif text-base font-medium text-neutral-950 dark:text-brand-cream">Supports Better Sleep</h4>
+                                    <p class="font-sans text-xs text-neutral-500 dark:text-white/40 mt-1">Allows the muscles to relax and prepares the nervous system for deep sleep.</p>
+                                </div>
                             </div>
                         </div>
-
-                        <div>
-                            <label class="block text-[9px] font-semibold mb-1.5">Delivery / Pickup</label>
-                            <select id="order-delivery"
-                                class="w-full h-11 px-3 border border-[#d8c7b5] dark:border-white/20 bg-white dark:bg-brand-black text-xs outline-none focus:border-gold transition-colors">
-                                <option>Delivery</option>
-                                <option>Pickup</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label class="block text-[9px] font-semibold mb-1.5">Address</label>
-                            <input id="order-address" type="text" placeholder="Delivery address, if required"
-                                class="w-full h-11 px-3 border border-[#d8c7b5] dark:border-white/20 bg-white dark:bg-brand-black text-xs outline-none focus:border-gold transition-colors">
-                        </div>
-
-                        <div>
-                            <label class="block text-[9px] font-semibold mb-1.5">Message / Special Requirement</label>
-                            <textarea id="order-message" rows="4" placeholder="Any fragrance preference, gift request, or special requirement?"
-                                class="w-full px-3 py-3 border border-[#d8c7b5] dark:border-white/20 bg-white dark:bg-brand-black text-xs outline-none focus:border-gold transition-colors resize-y"></textarea>
-                        </div>
-
-                        <button type="submit"
-                            class="inline-flex items-center gap-2 bg-[#128C4A] text-white px-6 py-3.5 text-[10px] uppercase tracking-[0.12em] font-bold hover:opacity-90 active:scale-[0.98] transition-all">
-                            <i data-lucide="message-circle" class="w-4 h-4"></i>
-                            Send Order on WhatsApp →
-                        </button>
-                        <p class="text-[9px] text-neutral-400 dark:text-white/30">
-                            Your order details will open in WhatsApp for confirmation.
-                        </p>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- INSTAGRAM GALLERY SECTION -->
-    <section id="instagram" class="py-24 bg-[#F5F2ED] dark:bg-brand-dark border-b border-neutral-200 dark:border-white/10 reveal">
+    <!-- PRODUCT COLLECTIONS SECTION -->
+    <section id="collections" class="py-24 bg-white dark:bg-brand-black border-b border-neutral-200 dark:border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto space-y-4 mb-12 title-reveal">
-                <span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold fly-badge inline-block">
-                    Follow the Ritual
-                </span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-light text-neutral-950 dark:text-brand-cream fly-text">
-                    IVARAA on Instagram
-                </h2>
-                <div class="h-[1px] w-16 bg-gold mx-auto fly-line"></div>
-                <p class="text-sm text-neutral-500 dark:text-white/50 leading-relaxed">
-                    Discover our latest rituals, products and moments of self-care.
-                </p>
+            <div class="text-center max-w-xl mx-auto space-y-3 mb-16">
+                <span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold">Signature Blends</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-light text-neutral-950 dark:text-brand-cream">Discover Your Perfect Blend</h2>
+            </div>
+            <!-- Cards Container dynamically handled by JS -->
+            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- QUICK ORDER ON WHATSAPP SECTION -->
+    <section id="order" class="py-20 bg-[#F5F2ED] dark:bg-brand-dark border-b border-neutral-200 dark:border-white/10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center space-y-3 mb-10">
+                <span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold">Quick Order On WhatsApp</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-light italic text-neutral-950 dark:text-brand-cream">Begin Your Ritual Here</h2>
+                <p class="text-xs sm:text-sm text-neutral-500 dark:text-white/50">Fill in the details below and IVARA will prepare a WhatsApp order message for you.</p>
             </div>
 
-            <!--
-                INSTAGRAM WIDGET INSERTION POINT
-                --------------------------------
-                Create an Instagram Profile/Grid widget for @ivaraa_the_divine_blessings with your chosen
-                feed provider, then paste the provider's generated embed code below.
+            <form id="whatsapp-order-form" onsubmit="handleOrderSubmit(event)" class="bg-white dark:bg-brand-black p-6 sm:p-10 border border-neutral-300 dark:border-white/10 space-y-6 shadow-xl">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-[11px] font-mono uppercase tracking-widest text-neutral-600 dark:text-neutral-400 mb-2">Name *</label>
+                        <input type="text" id="cust-name" required placeholder="Your name" class="w-full bg-[#F5F2ED]/50 dark:bg-brand-dark border border-neutral-300 dark:border-white/10 p-3 text-sm focus:outline-none focus:border-gold">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-mono uppercase tracking-widest text-neutral-600 dark:text-neutral-400 mb-2">Mobile Number *</label>
+                        <input type="tel" id="cust-phone" required placeholder="Your mobile number" class="w-full bg-[#F5F2ED]/50 dark:bg-brand-dark border border-neutral-300 dark:border-white/10 p-3 text-sm focus:outline-none focus:border-gold">
+                    </div>
+                </div>
 
-                Recommended starting option:
-                SnapWidget Instagram Grid / Feed
-                https://snapwidget.com/instagram-widget
+                <!-- MULTI-PRODUCT & PACK SIZE BUILDER -->
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="block text-[11px] font-mono uppercase tracking-widest text-neutral-600 dark:text-neutral-400">Select Products, Pack Size & Quantities *</label>
+                    </div>
+                    
+                    <div id="product-rows-container" class="space-y-3">
+                        <!-- Dynamic Rows Will Insert Here -->
+                    </div>
 
-                The provider's generated code is required because Instagram does not
-                expose a public browser-only feed URL that can safely be constructed
-                from a username alone.
-            -->
-            <!-- IVARAA INSTAGRAM GALLERY
-                 Instagram does not provide a public browser-only feed URL from a username.
-                 The gallery below is ready for a live widget embed.
+                    <button type="button" onclick="addProductRow()" class="mt-4 inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-gold hover:underline">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Add Another Product
+                    </button>
+                </div>
 
-                 Recommended free starting option:
-                 SociableKIT Instagram Profile Widget
-                 https://www.sociablekit.com/free-widgets/free-instagram-profile-widget-website/
+                <div>
+                    <label class="block text-[11px] font-mono uppercase tracking-widest text-neutral-600 dark:text-neutral-400 mb-2">Delivery Address *</label>
+                    <input type="text" id="cust-address" required placeholder="Complete delivery address" class="w-full bg-[#F5F2ED]/50 dark:bg-brand-dark border border-neutral-300 dark:border-white/10 p-3 text-sm focus:outline-none focus:border-gold">
+                </div>
 
-                 After creating the widget, paste the provider's embed code inside #instagram-widget-code.
-            -->
+                <button type="submit" class="w-full bg-gold text-brand-black font-bold uppercase tracking-[0.2em] text-xs py-4 hover:bg-gold/90 transition-all flex items-center justify-center gap-2 shadow-lg">
+                    <i data-lucide="message-square" class="w-4 h-4"></i> Send Order Via WhatsApp
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM GALLERY SECTION -->
+    <section id="instagram" class="py-24 bg-white dark:bg-brand-black border-b border-neutral-200 dark:border-white/10 reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-12 title-reveal">
+                <span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold fly-badge inline-block">Follow the Ritual</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-light text-neutral-950 dark:text-brand-cream fly-text">IVARAA on Instagram</h2>
+                <div class="h-[1px] w-16 bg-gold mx-auto fly-line"></div>
+                <p class="text-sm text-neutral-500 dark:text-white/50 leading-relaxed">Discover our latest rituals, products and moments of self-care.</p>
+            </div>
+
             <div id="instagram-feed" class="instagram-feed-shell mx-auto w-full max-w-6xl">
                 <div id="instagram-widget-code" class="w-full min-h-[320px]">
                     <div class="sk-instagram-feed" data-embed-id="25719249"></div>
@@ -518,9 +450,7 @@
             </div>
 
             <div class="text-center mt-8">
-                <a href="https://www.instagram.com/ivaraa_the_divine_blessings/"
-                   target="_blank" rel="noopener noreferrer"
-                   class="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] font-semibold text-neutral-500 dark:text-white/50 hover:text-gold transition-colors">
+                <a href="https://www.instagram.com/ivaraa_the_divine_blessings/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] font-semibold text-neutral-500 dark:text-white/50 hover:text-gold transition-colors">
                     <i data-lucide="instagram" class="w-4 h-4"></i>
                     @ivaraa_the_divine_blessings
                 </a>
@@ -529,7 +459,7 @@
     </section>
 
     <!-- RITUAL GUIDE SECTION -->
-    <section id="rituals" class="py-24 bg-white dark:bg-brand-black border-b border-neutral-200 dark:border-white/10 reveal">
+    <section id="rituals" class="py-24 bg-[#F5F2ED] dark:bg-brand-dark border-b border-neutral-200 dark:border-white/10 reveal">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-xl mx-auto space-y-3 mb-16 title-reveal"><span class="font-mono text-xs text-gold uppercase tracking-[0.3em] font-semibold fly-badge inline-block">Sacred Escape</span>
     <h2 class="font-serif text-3xl sm:text-4xl font-light text-neutral-950 dark:text-brand-cream fly-text">Guided Meditation Timer</h2>
@@ -548,8 +478,8 @@
     </div>
     </div>
     <div class="lg:col-span-6 flex justify-center">
-    <div class="bg-[#F5F2ED] dark:bg-brand-dark p-8 border border-neutral-200 dark:border-white/10 w-full max-w-md text-center space-y-6 shadow-xl">
-    <div class="relative w-48 h-48 mx-auto rounded-full flex items-center justify-center bg-white dark:bg-brand-black border border-neutral-200 dark:border-white/10 shadow-inner overflow-hidden">
+    <div class="bg-white dark:bg-brand-black p-8 border border-neutral-200 dark:border-white/10 w-full max-w-md text-center space-y-6 shadow-xl">
+    <div class="relative w-48 h-48 mx-auto rounded-full flex items-center justify-center bg-[#F5F2ED]/50 dark:bg-brand-dark border border-neutral-200 dark:border-white/10 shadow-inner overflow-hidden">
     <div id="breath-ripple" class="absolute w-36 h-36 rounded-full bg-gold/10 scale-100 transition-all duration-[4000ms] ease-in-out"></div>
     <div class="z-10"><span id="breath-phase" class="block font-mono text-[9px] tracking-widest uppercase text-neutral-400 transition-colors duration-300">Ready</span> <span id="timer-display" class="block font-serif text-4xl text-neutral-950 dark:text-brand-cream font-medium">2:00</span></div>
     </div>
@@ -642,7 +572,6 @@
                             </svg>
                         </a>
                     </div>
-
                 </div>
             </div>
 
@@ -656,12 +585,6 @@
 
 <!-- GLOBAL SCRIPTS & CONFIGURATION -->
 <script>
-        /* Product images supplied for this update:
-   cinnamon-magic -> images/cinnamon-magic.png
-   camphor-clarity -> images/camphor-clarity.png
-   mint-mystique -> images/mint-mystique.jpeg
-   velvet-vanilla -> images/velvet-vanilla.jpeg
-*/
         const IMAGE_CONFIG = {
             heroBanner: 'images/6.jpeg',
             products: {
@@ -694,10 +617,12 @@
             { q: 'How often can I use bathing salts?', a: 'We recommend enjoying an IVARAA bath 2-3 times per week for optimal relaxation.' }
         ];
 
+        const WHATSAPP_NUMBER = '919999999999';
+
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('img-hero').src = IMAGE_CONFIG.heroBanner;
 
-            // Render Product Grid with enhanced Group Hovers and Image Zoom animations
+            // Render Product Grid
             const productGrid = document.getElementById('product-grid');
             productGrid.innerHTML = ''; 
             PRODUCTS.forEach(p => {
@@ -756,6 +681,9 @@
                 `;
             });
 
+            // Initialize Order Form Row
+            addProductRow();
+
             lucide.createIcons();
             initScrollReveal();
             initLuxuryScrollEngine();
@@ -764,9 +692,75 @@
             if (footerYear) footerYear.textContent = new Date().getFullYear();
         });
 
-        // Native scrolling + lightweight interaction pipeline.
-        // The old version transformed the whole page and manually set body height,
-        // which was the source of the large blank area after the FAQ section.
+        // Dynamic Product Rows for WhatsApp Builder
+        let rowCounter = 0;
+        function addProductRow() {
+            rowCounter++;
+            const container = document.getElementById('product-rows-container');
+            const rowDiv = document.createElement('div');
+            rowDiv.id = `prod-row-${rowCounter}`;
+            rowDiv.className = 'grid grid-cols-1 sm:grid-cols-12 gap-3 items-center bg-[#F5F2ED]/50 dark:bg-brand-dark p-3 border border-neutral-200 dark:border-white/10';
+
+            rowDiv.innerHTML = `
+                <div class="sm:col-span-5">
+                    <select class="prod-select w-full bg-white dark:bg-brand-black border border-neutral-300 dark:border-white/10 p-2.5 text-xs focus:outline-none focus:border-gold" required>
+                        <option value="">Select Bath Salt / Blend</option>
+                        ${PRODUCTS.map(p => `<option value="${p.name}">${p.name}</option>`).join('')}
+                    </select>
+                </div>
+                <div class="sm:col-span-3">
+                    <select class="pack-select w-full bg-white dark:bg-brand-black border border-neutral-300 dark:border-white/10 p-2.5 text-xs focus:outline-none focus:border-gold" required>
+                        <option value="Standard Jar">Standard Jar</option>
+                        <option value="500g Jar">500g Jar</option>
+                        <option value="1kg Pouch">1kg Pouch</option>
+                    </select>
+                </div>
+                <div class="sm:col-span-3">
+                    <input type="number" min="1" value="1" class="qty-input w-full bg-white dark:bg-brand-black border border-neutral-300 dark:border-white/10 p-2.5 text-xs focus:outline-none focus:border-gold" placeholder="Qty" required>
+                </div>
+                <div class="sm:col-span-1 flex justify-end">
+                    <button type="button" onclick="removeProductRow('${rowDiv.id}')" class="text-neutral-400 hover:text-red-500 p-1">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            `;
+
+            container.appendChild(rowDiv);
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function removeProductRow(rowId) {
+            const container = document.getElementById('product-rows-container');
+            if (container.children.length > 1) {
+                const el = document.getElementById(rowId);
+                if (el) el.remove();
+            }
+        }
+
+        function handleOrderSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('cust-name').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+
+            const rows = document.querySelectorAll('#product-rows-container > div');
+            let itemsSummary = '';
+
+            rows.forEach((row, idx) => {
+                const prod = row.querySelector('.prod-select').value;
+                const pack = row.querySelector('.pack-select').value;
+                const qty = row.querySelector('.qty-input').value;
+                if (prod) {
+                    itemsSummary += `${idx + 1}. *${prod}* - ${pack} (Qty: ${qty})\n`;
+                }
+            });
+
+            const whatsappMessage = `*IVARAA — New WhatsApp Order*\n\n*Name:* ${name}\n*Mobile:* ${phone}\n\n*Selected Products:*\n${itemsSummary}\n*Delivery Address:* ${address}\n\nPlease confirm order availability and pricing details.`;
+
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
         function initLuxuryScrollEngine() {
             const progress = document.getElementById('scroll-progress');
             const parallaxItems = document.querySelectorAll('.parallax-wrapper');
@@ -814,7 +808,6 @@
             updateScrollUI();
         }
 
-        // Enhanced Intersection Observer for Container Reveals
         function initScrollReveal() {
             const reveals = document.querySelectorAll('.reveal');
             const containerObserver = new IntersectionObserver((entries) => {
@@ -836,7 +829,6 @@
             }, { threshold: 0.1 });
             headers.forEach(el => headerObserver.observe(el));
             
-            // Instantly activate first layout layer visible on load
             setTimeout(() => {
                 if(headers[0]) headers[0].classList.add('active');
             }, 200);
@@ -882,45 +874,7 @@
             setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 310);
         }
 
-
-        // WhatsApp order flow
-        // IMPORTANT: replace this with your IVARAA WhatsApp Business number in international format,
-        // digits only. Example for India: 919876543210
-        const WHATSAPP_NUMBER = '919999999999';
-
-        function orderProduct(productName) {
-            document.getElementById('order-product').value = productName;
-            scrollToSection('order');
-            setTimeout(() => document.getElementById('order-name').focus(), 500);
-        }
-
-        function sendWhatsAppOrder(event) {
-            event.preventDefault();
-
-            const name = document.getElementById('order-name').value.trim();
-            const mobile = document.getElementById('order-mobile').value.trim();
-            const product = document.getElementById('order-product').value;
-            const quantity = document.getElementById('order-quantity').value;
-            const delivery = document.getElementById('order-delivery').value;
-            const address = document.getElementById('order-address').value.trim();
-            const message = document.getElementById('order-message').value.trim();const whatsappMessage =
-`*IVARAA — New Order Enquiry*
-
-*Name:* ${name}
-*Mobile:* ${mobile}
-*Bath Salt / Blend:* ${product}
-*Quantity:* ${quantity}
-*Delivery / Pickup:* ${delivery}
-*Address:* ${address || 'Not provided'}
-*Message / Special Requirement:* ${message || 'None'}
-
-Please confirm availability, price and delivery details.`;
-
-            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
-            window.open(url, '_blank', 'noopener,noreferrer');
-        }
-
-        // Immersive Bio-Breathe Loop Customizations
+        // Bio-Breathe Timer
         let timer = null;
         let timeLeft = 120;
         let running = false;
